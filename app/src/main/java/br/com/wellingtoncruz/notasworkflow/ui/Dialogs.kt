@@ -24,8 +24,8 @@ import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.outlined.KeyboardArrowDown
+import androidx.compose.material.icons.automirrored.outlined.KeyboardArrowRight
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -100,7 +100,7 @@ fun ChoiceDialog(
 			}
 		},
 		confirmButton = {},
-		dismissButton = { TextButton(onClick = onDismiss) { Text("Cancelar") } },
+		dismissButton = { TextButton(shape = Tokens.Radius.button, onClick = onDismiss) { Text("Cancelar") } },
 	)
 }
 
@@ -111,8 +111,8 @@ fun ConfirmDialog(title: String, text: String, confirmLabel: String = "Sim", onC
 		onDismissRequest = onDismiss,
 		title = { Text(title) },
 		text = { Text(text) },
-		confirmButton = { TextButton(onClick = onConfirm) { Text(confirmLabel) } },
-		dismissButton = { TextButton(onClick = onDismiss) { Text("Não") } },
+		confirmButton = { TextButton(shape = Tokens.Radius.button, onClick = onConfirm) { Text(confirmLabel) } },
+		dismissButton = { TextButton(shape = Tokens.Radius.button, onClick = onDismiss) { Text("Não") } },
 	)
 }
 
@@ -142,8 +142,8 @@ fun TextInputDialog(
 				modifier = Modifier.fillMaxWidth().focusRequester(focus),
 			)
 		},
-		confirmButton = { TextButton(onClick = { onConfirm(value) }) { Text(confirmLabel) } },
-		dismissButton = { TextButton(onClick = onDismiss) { Text("Cancelar") } },
+		confirmButton = { TextButton(shape = Tokens.Radius.button, onClick = { onConfirm(value) }) { Text(confirmLabel) } },
+		dismissButton = { TextButton(shape = Tokens.Radius.button, onClick = onDismiss) { Text("Cancelar") } },
 	)
 	LaunchedEffect(Unit) { focus.requestFocus() }
 }
@@ -185,13 +185,14 @@ fun LocationTree(store: NotesStore, selected: Place, onSelect: (Place) -> Unit) 
 @Composable
 fun ExpandButton(open: Boolean, what: String, onClick: () -> Unit) {
 	TextButton(
+		shape = Tokens.Radius.button,
 		onClick = onClick,
 		modifier = Modifier.semantics {
 			contentDescription = if (open) "Fechar $what" else "Abrir $what"
 			stateDescription = if (open) "aberta" else "fechada"
 		},
 	) {
-		Icon(if (open) Icons.Filled.KeyboardArrowDown else Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null)
+		Icon(if (open) Icons.Outlined.KeyboardArrowDown else Icons.AutoMirrored.Outlined.KeyboardArrowRight, contentDescription = null)
 	}
 }
 
@@ -202,8 +203,8 @@ fun LocationDialog(title: String, store: NotesStore, current: Place, onChoose: (
 		onDismissRequest = onDismiss,
 		title = { Text(title) },
 		text = { Column(Modifier.verticalScroll(rememberScrollState())) { LocationTree(store, place) { place = it } } },
-		confirmButton = { TextButton(onClick = { onChoose(place) }) { Text("OK") } },
-		dismissButton = { TextButton(onClick = onDismiss) { Text("Cancelar") } },
+		confirmButton = { TextButton(shape = Tokens.Radius.button, onClick = { onChoose(place) }) { Text("OK") } },
+		dismissButton = { TextButton(shape = Tokens.Radius.button, onClick = onDismiss) { Text("Cancelar") } },
 	)
 }
 
@@ -224,6 +225,7 @@ fun NewNoteDialog(
 	vm: AppViewModel,
 	initialTitle: String = "",
 	initialPlace: Place = Place.LOOSE,
+	initialLane: String = Model.DEFAULT_LANE,
 	caption: String = "Nova folha",
 	onCreate: (title: String, place: Place, laneId: String) -> Unit,
 	onDismiss: () -> Unit,
@@ -231,7 +233,7 @@ fun NewNoteDialog(
 	val store = vm.store
 	var title by remember { mutableStateOf(initialTitle) }
 	var place by remember { mutableStateOf(store.location(initialPlace)) }
-	var lane by remember { mutableStateOf(Model.DEFAULT_LANE) }
+	var lane by remember { mutableStateOf(if (initialLane in Model.LANE_IDS) initialLane else Model.DEFAULT_LANE) }
 	var choosingPlace by remember { mutableStateOf(false) }
 	var newNotebook by remember { mutableStateOf(false) }
 	var newFolder by remember { mutableStateOf(false) }
@@ -254,12 +256,13 @@ fun NewNoteDialog(
 				)
 				DialogHeading("Local")
 				OutlinedButton(
+					shape = Tokens.Radius.button,
 					onClick = { choosingPlace = true },
 					modifier = Modifier.fillMaxWidth().semantics { contentDescription = "Local: ${Texts.placeLabel(store, place)}. Mudar" },
 				) { Text(Texts.placeLabel(store, place)) }
 				FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-					TextButton(onClick = { newNotebook = true }) { Text("Novo caderno…") }
-					TextButton(onClick = { newFolder = true }) { Text("Nova pasta…") }
+					TextButton(shape = Tokens.Radius.button, onClick = { newNotebook = true }) { Text("Novo caderno…") }
+					TextButton(shape = Tokens.Radius.button, onClick = { newFolder = true }) { Text("Nova pasta…") }
 				}
 				DialogHeading("Status")
 				Column(Modifier.selectableGroup()) {
@@ -267,8 +270,8 @@ fun NewNoteDialog(
 				}
 			}
 		},
-		confirmButton = { TextButton(onClick = { onCreate(title, place, lane) }) { Text("Criar") } },
-		dismissButton = { TextButton(onClick = onDismiss) { Text("Cancelar") } },
+		confirmButton = { TextButton(shape = Tokens.Radius.button, onClick = { onCreate(title, place, lane) }) { Text("Criar") } },
+		dismissButton = { TextButton(shape = Tokens.Radius.button, onClick = onDismiss) { Text("Cancelar") } },
 	)
 	LaunchedEffect(Unit) { focus.requestFocus() }
 
@@ -333,18 +336,18 @@ fun NewNotebookDialog(vm: AppViewModel, initialFolder: String? = null, onCreated
 					RadioRow("Nenhuma pasta", folderId == null, { folderId = null })
 					for (f in store.folders) RadioRow(f.name, folderId == f.id, { folderId = f.id })
 				}
-				TextButton(onClick = { newFolder = true }) { Text("Nova pasta…") }
+				TextButton(shape = Tokens.Radius.button, onClick = { newFolder = true }) { Text("Nova pasta…") }
 			}
 		},
 		confirmButton = {
-			TextButton(onClick = {
+			TextButton(shape = Tokens.Radius.button, onClick = {
 				vm.safe { store.addNotebook(name, folderId) }?.let {
 					vm.say("Caderno ${it.name} criado")
 					onCreated(it)
 				}
 			}) { Text("Criar") }
 		},
-		dismissButton = { TextButton(onClick = onDismiss) { Text("Cancelar") } },
+		dismissButton = { TextButton(shape = Tokens.Radius.button, onClick = onDismiss) { Text("Cancelar") } },
 	)
 	LaunchedEffect(Unit) { focus.requestFocus() }
 	if (newFolder) {

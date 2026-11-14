@@ -21,8 +21,8 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.automirrored.outlined.ArrowBack
+import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -210,12 +210,13 @@ fun NoteScreen(vm: AppViewModel, screen: Screen.NoteEditor, snackbar: SnackbarHo
 		snackbarHost = { SnackbarHost(snackbar) },
 		topBar = {
 			TopAppBar(
+				colors = trelloTopBarColors(),
 				title = { Text("Folha") },
 				navigationIcon = {
-					IconButton(onClick = { close() }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Salvar e fechar") }
+					IconButton(onClick = { close() }) { Icon(Icons.AutoMirrored.Outlined.ArrowBack, contentDescription = "Salvar e fechar") }
 				},
 				actions = {
-					IconButton(onClick = { save(auto = false) }) { Icon(Icons.Filled.Check, contentDescription = "Salvar") }
+					IconButton(onClick = { save(auto = false) }) { Icon(Icons.Outlined.Check, contentDescription = "Salvar") }
 				},
 			)
 		},
@@ -249,15 +250,17 @@ fun NoteScreen(vm: AppViewModel, screen: Screen.NoteEditor, snackbar: SnackbarHo
 			)
 			FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.padding(top = 8.dp)) {
 				OutlinedButton(
+					shape = Tokens.Radius.button,
 					onClick = { choosingPlace = true },
 					modifier = Modifier.semantics { contentDescription = "Local: ${Texts.placeLabel(store, place)}. Mudar" },
 				) { Text("Local: ${Texts.placeLabel(store, place)}") }
 				OutlinedButton(
+					shape = Tokens.Radius.button,
 					onClick = { choosingLane = true },
 					modifier = Modifier.semantics { contentDescription = "Status: ${Texts.laneName(lane)}. Mudar" },
 				) { Text("Status: ${Texts.laneName(lane)}") }
-				TextButton(onClick = { formatting = true }) { Text("Formatação…") }
-				TextButton(onClick = { insertDocument.launch(DOCUMENT_TYPES) }) { Text("Inserir documento…") }
+				TextButton(shape = Tokens.Radius.button, onClick = { formatting = true }) { Text("Formatação…") }
+				TextButton(shape = Tokens.Radius.button, onClick = { insertDocument.launch(DOCUMENT_TYPES) }) { Text("Inserir documento…") }
 			}
 			Text(
 				saveState,

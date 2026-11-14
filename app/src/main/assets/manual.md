@@ -1,6 +1,6 @@
 # Manual de uso do NotasWorkflow para Android
 
-Versão 1.12.0, com as mesmas funções do complemento Notas Workflow NVDA 1.12.0.
+Versão 1.12.1, com as mesmas funções do complemento Notas Workflow NVDA 1.12.0.
 
 O NotasWorkflow organiza folhas (anotações e tarefas) em quatro raias de status: **A fazer**, **Em andamento**, **Bloqueada** e **Concluída**. As folhas podem ficar soltas, direto numa pasta ou num caderno, e um caderno pode estar dentro de uma pasta. Tudo funciona com o TalkBack, com o toque e com um teclado físico.
 
@@ -9,11 +9,14 @@ O NotasWorkflow organiza folhas (anotações e tarefas) em quatro raias de statu
 A tela principal tem, de cima para baixo:
 
 - **Buscar** e **Mais opções**, na barra do topo.
+- O botão **Nova folha**, que abre a janela Nova folha na hora.
 - O botão **Mostrar**, que diz o que está sendo mostrado e quantas folhas há. Ele abre uma lista com Todas as folhas, Folhas soltas, Folhas recentes (as 10 alteradas por último), cada pasta com os cadernos dela dentro e os cadernos sem pasta. As pastas começam fechadas: o botão ao lado de cada pasta abre e fecha. Escolher um item mostra as folhas dele.
 - As quatro raias, como títulos ("A fazer, 3 folhas"). Com o TalkBack, deslize com dois dedos ou use a navegação por títulos para ir de uma raia a outra. As raias começam fechadas: toque duas vezes para abrir ou fechar. Com teclado, Seta para a direita abre e Seta para a esquerda fecha.
 - O botão **Criar…**, no canto de baixo.
 
-Cada raia mostra 200 folhas por vez; **Mostrar mais folhas**, no fim da raia, mostra as próximas.
+Cada raia mostra 200 folhas por vez; **Mostrar mais folhas**, no fim da raia, mostra as próximas. Uma raia aberta termina com **Adicionar uma folha**, que cria uma folha já nessa raia.
+
+A tela tem o visual de um quadro do Trello: o fundo azul é o quadro, cada raia é uma lista cinza e cada folha é um cartão branco com uma etiqueta na cor da raia (azul para A fazer, laranja para Em andamento, vermelho para Bloqueada e verde para Concluída). No tema escuro do celular, as cores ficam escuras.
 
 ### Uma folha na lista
 
@@ -38,7 +41,7 @@ Com teclado físico: **Alt+Shift+Seta para a direita** e **Alt+Shift+Seta para a
 
 ## Criar
 
-O botão **Criar…** abre um menu com:
+O botão **Nova folha**, no topo da tela principal, e **Adicionar uma folha**, no fim de cada raia aberta, abrem direto a janela Nova folha (a segunda já com o status da raia). O botão **Criar…** abre um menu com:
 
 - **Folha…**: pede o **Título**, o **Local** e o **Status**. O local já vem com o caderno ou a pasta que está sendo mostrada. Ao lado do local ficam **Novo caderno…** e **Nova pasta…**: o que você cria ali já fica escolhido como local. **Criar** cria a folha e abre a janela dela, no conteúdo.
 - **Caderno…**: pede o **Nome** e a **Pasta** (Nenhuma pasta ou uma das pastas), com **Nova pasta…**.
@@ -131,4 +134,5 @@ O aplicativo não usa a internet: nenhuma folha sai do aparelho, a não ser para
 
 ## Histórico deste manual
 
+- 1.12.1: visual do Trello (cores, tipografia, cartões e ícones de linha); botão Nova folha na tela principal e Adicionar uma folha no fim de cada raia.
 - 1.12.0: primeira versão para Android, com as funções do complemento Notas Workflow NVDA 1.12.0.

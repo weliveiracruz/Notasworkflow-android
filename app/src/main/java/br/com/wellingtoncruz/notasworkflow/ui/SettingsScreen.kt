@@ -20,7 +20,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.outlined.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -64,9 +64,10 @@ fun SettingsScreen(vm: AppViewModel, snackbar: SnackbarHostState) {
 		snackbarHost = { SnackbarHost(snackbar) },
 		topBar = {
 			TopAppBar(
+				colors = trelloTopBarColors(),
 				title = { Text("Configurações") },
 				navigationIcon = {
-					IconButton(onClick = { vm.back() }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Fechar") }
+					IconButton(onClick = { vm.back() }) { Icon(Icons.AutoMirrored.Outlined.ArrowBack, contentDescription = "Fechar") }
 				},
 			)
 		},
@@ -109,23 +110,23 @@ fun SettingsScreen(vm: AppViewModel, snackbar: SnackbarHostState) {
 				style = MaterialTheme.typography.bodySmall,
 				modifier = Modifier.padding(vertical = 8.dp),
 			)
-			OutlinedButton(onClick = { openData.launch(jsonTypes) }, modifier = Modifier.fillMaxWidth()) {
+			OutlinedButton(shape = Tokens.Radius.button, onClick = { openData.launch(jsonTypes) }, modifier = Modifier.fillMaxWidth()) {
 				Text("Abrir arquivo de folhas…")
 			}
-			OutlinedButton(onClick = { createData.launch("NotasWorkflowNVDA-data.json") }, modifier = Modifier.fillMaxWidth()) {
+			OutlinedButton(shape = Tokens.Radius.button, onClick = { createData.launch("NotasWorkflowNVDA-data.json") }, modifier = Modifier.fillMaxWidth()) {
 				Text("Criar arquivo de folhas…")
 			}
 			if (vm.dataFileName != null) {
-				OutlinedButton(onClick = { vm.useDeviceStorage() }, modifier = Modifier.fillMaxWidth()) {
+				OutlinedButton(shape = Tokens.Radius.button, onClick = { vm.useDeviceStorage() }, modifier = Modifier.fillMaxWidth()) {
 					Text("Usar o armazenamento do aparelho")
 				}
 			}
 
 			Heading("Importar e exportar")
-			OutlinedButton(onClick = { importFile.launch(jsonTypes) }, modifier = Modifier.fillMaxWidth()) {
+			OutlinedButton(shape = Tokens.Radius.button, onClick = { importFile.launch(jsonTypes) }, modifier = Modifier.fillMaxWidth()) {
 				Text("Importar folhas…")
 			}
-			OutlinedButton(onClick = { exportFile.launch("NotasWorkflow-folhas.json") }, modifier = Modifier.fillMaxWidth()) {
+			OutlinedButton(shape = Tokens.Radius.button, onClick = { exportFile.launch("NotasWorkflow-folhas.json") }, modifier = Modifier.fillMaxWidth()) {
 				Text("Exportar folhas…")
 			}
 			Text(

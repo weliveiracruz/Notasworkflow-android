@@ -12,8 +12,8 @@ android {
 		applicationId = "br.com.wellingtoncruz.notasworkflow"
 		minSdk = 26
 		targetSdk = 35
-		versionCode = 1
-		versionName = "1.12.0"
+		versionCode = 2
+		versionName = "1.12.1"
 	}
 
 	signingConfigs {

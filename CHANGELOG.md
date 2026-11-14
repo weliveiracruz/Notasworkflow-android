@@ -1,5 +1,12 @@
 # Histórico de versões
 
+## 1.12.1
+
+* Visual do Trello: tokens de cor, tipografia, espaçamento, cantos e sombras da paleta do Atlassian Design System (quadro azul, raias como listas cinzas, folhas como cartões brancos com a etiqueta da raia), com tema claro e escuro.
+* Ícones de linha (Material Symbols Outlined) em todas as telas.
+* Botão **Nova folha** no topo da tela principal e **Adicionar uma folha** no fim de cada raia aberta (a folha já nasce nessa raia).
+* Anel de foco azul nos cartões, para quem usa teclado físico.
+
 ## 1.12.0
 
 Primeira versão para Android, com as mesmas funções do complemento Notas Workflow NVDA 1.12.0:

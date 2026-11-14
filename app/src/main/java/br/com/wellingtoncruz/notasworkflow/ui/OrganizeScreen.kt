@@ -20,10 +20,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.automirrored.outlined.ArrowBack
+import androidx.compose.material.icons.automirrored.outlined.KeyboardArrowRight
+import androidx.compose.material.icons.outlined.Add
+import androidx.compose.material.icons.outlined.KeyboardArrowDown
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -218,13 +218,14 @@ fun OrganizeScreen(vm: AppViewModel, snackbar: SnackbarHostState) {
 		snackbarHost = { SnackbarHost(snackbar) },
 		topBar = {
 			TopAppBar(
+				colors = trelloTopBarColors(),
 				title = { Text("Cadernos e pastas") },
 				navigationIcon = {
-					IconButton(onClick = { vm.back() }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Fechar") }
+					IconButton(onClick = { vm.back() }) { Icon(Icons.AutoMirrored.Outlined.ArrowBack, contentDescription = "Fechar") }
 				},
 				actions = {
 					Box {
-						IconButton(onClick = { createMenu = true }) { Icon(Icons.Filled.Add, contentDescription = "Criar…") }
+						IconButton(onClick = { createMenu = true }) { Icon(Icons.Outlined.Add, contentDescription = "Criar…") }
 						DropdownMenu(expanded = createMenu, onDismissRequest = { createMenu = false }) {
 							DropdownMenuItem(text = { Text("Folha…") }, onClick = { createMenu = false; pending = Pending.NewNote(Place.LOOSE) })
 							DropdownMenuItem(text = { Text("Caderno…") }, onClick = { createMenu = false; pending = Pending.NewNotebook(null) })
@@ -373,7 +374,7 @@ private fun TreeItem(row: TreeRow) {
 				.padding(start = (16 + row.depth * 24).dp, end = 16.dp),
 		) {
 			if (row.open != null) {
-				Icon(if (row.open) Icons.Filled.KeyboardArrowDown else Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null)
+				Icon(if (row.open) Icons.Outlined.KeyboardArrowDown else Icons.AutoMirrored.Outlined.KeyboardArrowRight, contentDescription = null)
 			}
 			Text(
 				row.label,

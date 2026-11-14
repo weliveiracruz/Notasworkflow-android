@@ -20,6 +20,10 @@ Aplicativo Android, em Jetpack Compose, com as mesmas funções do complemento [
 
 O formato do arquivo é o mesmo do complemento e do aplicativo web (`notas-workflow`, versão 1).
 
+## Visual
+
+O visual segue o Trello: cores, tipografia, espaçamento, cantos e sombras em tokens (`ui/Theme.kt`) com a paleta do Atlassian Design System, em tema claro e escuro. O fundo azul é o quadro, as raias são listas cinzas e as folhas são cartões brancos com a etiqueta da cor da raia. Os ícones são Material Symbols Outlined (de linha, como os do Trello). A tela principal tem o botão **Nova folha** e cada raia aberta termina com **Adicionar uma folha**.
+
 ## Estrutura
 
 - `app/src/main/java/.../core`: o núcleo em Kotlin puro (sem Android), tradução direta dos módulos do complemento: `Model`, `NotesStore` (gravação em segundo plano, cópia de segurança, recuperação de arquivo danificado, importação), `Markup`, `Search`, `Importer` + `Mime`, `Exporter`, `Texts`.

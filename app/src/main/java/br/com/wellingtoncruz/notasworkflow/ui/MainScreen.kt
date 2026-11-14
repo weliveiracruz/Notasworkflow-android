@@ -11,6 +11,14 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Surface
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Box
@@ -30,11 +38,11 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.outlined.Add
+import androidx.compose.material.icons.outlined.KeyboardArrowDown
+import androidx.compose.material.icons.automirrored.outlined.KeyboardArrowRight
+import androidx.compose.material.icons.outlined.MoreVert
+import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -110,6 +118,8 @@ private sealed class MainRow(val key: String) {
 	class NoteRow(val note: Note) : MainRow(note.id)
 	class More(val laneId: String, val count: Int, val remaining: Int) : MainRow("more-$laneId")
 	class Empty(val laneId: String) : MainRow("empty-$laneId")
+	/** "+ Adicionar uma folha" at the end of an open lane, as in a Trello list. */
+	class Add(val laneId: String) : MainRow("add-$laneId")
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -123,7 +133,8 @@ fun MainScreen(vm: AppViewModel, snackbar: SnackbarHostState) {
 	var menuOpen by remember { mutableStateOf(false) }
 	var createOpen by remember { mutableStateOf(false) }
 	var choosingFilter by remember { mutableStateOf(false) }
-	var newNote by remember { mutableStateOf(false) }
+	/** The lane of the new note being created, or null. */
+	var newNote by remember { mutableStateOf<String?>(null) }
 	var newNotebook by remember { mutableStateOf(false) }
 	var newFolder by remember { mutableStateOf(false) }
 	var document by remember { mutableStateOf<Pair<ImportedDocument, String>?>(null) }
@@ -149,6 +160,7 @@ fun MainScreen(vm: AppViewModel, snackbar: SnackbarHostState) {
 			val limit = shown[lane] ?: PAGE
 			notes.take(limit).forEach { out.add(MainRow.NoteRow(it)) }
 			if (notes.size > limit) out.add(MainRow.More(lane, minOf(PAGE, notes.size - limit), notes.size - limit))
+			out.add(MainRow.Add(lane))
 		}
 		out
 	}
@@ -167,14 +179,16 @@ fun MainScreen(vm: AppViewModel, snackbar: SnackbarHostState) {
 	}
 
 	Scaffold(
+		containerColor = trello.board,
 		snackbarHost = { SnackbarHost(snackbar) },
 		topBar = {
 			TopAppBar(
+				colors = trelloTopBarColors(),
 				title = { Text(Texts.APP_NAME) },
 				actions = {
-					IconButton(onClick = { vm.open(Screen.SearchNotes) }) { Icon(Icons.Filled.Search, contentDescription = "Buscar") }
+					IconButton(onClick = { vm.open(Screen.SearchNotes) }) { Icon(Icons.Outlined.Search, contentDescription = "Buscar") }
 					Box {
-						IconButton(onClick = { menuOpen = true }) { Icon(Icons.Filled.MoreVert, contentDescription = "Mais opções") }
+						IconButton(onClick = { menuOpen = true }) { Icon(Icons.Outlined.MoreVert, contentDescription = "Mais opções") }
 						DropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false }) {
 							DropdownMenuItem(text = { Text("Cadernos e pastas…") }, onClick = { menuOpen = false; vm.open(Screen.Organize) })
 							DropdownMenuItem(text = { Text("Exportar…") }, onClick = { menuOpen = false; exportPicker = true })
@@ -190,11 +204,14 @@ fun MainScreen(vm: AppViewModel, snackbar: SnackbarHostState) {
 			Box {
 				ExtendedFloatingActionButton(
 					onClick = { createOpen = true },
-					icon = { Icon(Icons.Filled.Add, contentDescription = null) },
+					containerColor = trello.primary,
+					contentColor = trello.onPrimary,
+					shape = Tokens.Radius.card,
+					icon = { Icon(Icons.Outlined.Add, contentDescription = null) },
 					text = { Text("Criar…") },
 				)
 				DropdownMenu(expanded = createOpen, onDismissRequest = { createOpen = false }) {
-					DropdownMenuItem(text = { Text("Folha…") }, onClick = { createOpen = false; newNote = true })
+					DropdownMenuItem(text = { Text("Folha…") }, onClick = { createOpen = false; newNote = Model.DEFAULT_LANE })
 					DropdownMenuItem(text = { Text("Caderno…") }, onClick = { createOpen = false; newNotebook = true })
 					DropdownMenuItem(text = { Text("Pasta…") }, onClick = { createOpen = false; newFolder = true })
 					DropdownMenuItem(
@@ -209,17 +226,38 @@ fun MainScreen(vm: AppViewModel, snackbar: SnackbarHostState) {
 			if (!vm.loaded) {
 				Text(
 					"Carregando as folhas…",
+					color = trello.onBoard,
 					modifier = Modifier.padding(16.dp).semantics { liveRegion = LiveRegionMode.Polite },
 				)
 				return@Column
 			}
 			val total = remember(revision, filter) { store.filtered(filter).size }
-			OutlinedButton(
-				onClick = { choosingFilter = true },
-				modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp)
-					.semantics { contentDescription = "Mostrar: ${Texts.filterName(store, filter)}, ${Texts.notesCount(total)}. Mudar" },
+			Row(
+				horizontalArrangement = Arrangement.spacedBy(Tokens.Space.s100),
+				verticalAlignment = Alignment.CenterVertically,
+				modifier = Modifier.fillMaxWidth().padding(horizontal = Tokens.Space.s100, vertical = Tokens.Space.s100),
 			) {
-				Text("Mostrar: ${Texts.filterName(store, filter)} (${Texts.notesCount(total)})", maxLines = 1, overflow = TextOverflow.Ellipsis)
+				// Show…: a translucent button over the board, as the buttons of a Trello board header.
+				Button(
+					onClick = { choosingFilter = true },
+					shape = Tokens.Radius.button,
+					colors = ButtonDefaults.buttonColors(containerColor = trello.boardButton, contentColor = trello.onBoard),
+					modifier = Modifier.weight(1f).heightIn(min = Tokens.Size.touch)
+						.semantics { contentDescription = "Mostrar: ${Texts.filterName(store, filter)}, ${Texts.notesCount(total)}. Mudar" },
+				) {
+					Text("Mostrar: ${Texts.filterName(store, filter)} (${Texts.notesCount(total)})", maxLines = 1, overflow = TextOverflow.Ellipsis)
+				}
+				// The button to create a new note, always at hand on the home screen.
+				Button(
+					onClick = { newNote = Model.DEFAULT_LANE },
+					shape = Tokens.Radius.button,
+					colors = ButtonDefaults.buttonColors(containerColor = trello.card, contentColor = trello.text),
+					modifier = Modifier.heightIn(min = Tokens.Size.touch),
+				) {
+					Icon(Icons.Outlined.Add, contentDescription = null)
+					Spacer(Modifier.width(Tokens.Space.s050))
+					Text("Nova folha")
+				}
 			}
 			LazyColumn(
 				state = listState,
@@ -229,23 +267,32 @@ fun MainScreen(vm: AppViewModel, snackbar: SnackbarHostState) {
 				items(rows, key = { it.key }) { row ->
 					when (row) {
 						is MainRow.LaneHeader -> LaneHeader(row) { vm.openLanes[row.laneId] = !row.open }
-						is MainRow.NoteRow -> NoteItem(
-							vm, row.note,
-							onDelete = { deleting = row.note },
-							onMove = { moving = row.note },
-							onExport = { exportRequest = ExportRequest("note", row.note.id) },
-						)
-						is MainRow.More -> Text(
-							Texts.showMore(row.count, row.remaining),
-							color = MaterialTheme.colorScheme.primary,
-							modifier = Modifier.buttonRow("mostrar") { shown[row.laneId] = (shown[row.laneId] ?: PAGE) + PAGE }
-								.padding(horizontal = 32.dp, vertical = 12.dp),
-						)
-						is MainRow.Empty -> Text(
-							"Nenhuma folha nesta raia",
-							style = MaterialTheme.typography.bodyMedium,
-							modifier = Modifier.padding(horizontal = 32.dp, vertical = 12.dp),
-						)
+						is MainRow.NoteRow -> ListBody {
+							NoteItem(
+								vm, row.note,
+								onDelete = { deleting = row.note },
+								onMove = { moving = row.note },
+								onExport = { exportRequest = ExportRequest("note", row.note.id) },
+							)
+						}
+						is MainRow.More -> ListBody {
+							Text(
+								Texts.showMore(row.count, row.remaining),
+								color = trello.primary,
+								style = MaterialTheme.typography.labelLarge,
+								modifier = Modifier.buttonRow("mostrar") { shown[row.laneId] = (shown[row.laneId] ?: PAGE) + PAGE }
+									.padding(horizontal = Tokens.Space.s100, vertical = Tokens.Space.s150),
+							)
+						}
+						is MainRow.Empty -> ListBody {
+							Text(
+								"Nenhuma folha nesta raia",
+								style = MaterialTheme.typography.bodyMedium,
+								color = trello.textSubtle,
+								modifier = Modifier.padding(horizontal = Tokens.Space.s100, vertical = Tokens.Space.s150),
+							)
+						}
+						is MainRow.Add -> AddNoteRow(row.laneId) { newNote = row.laneId }
 					}
 				}
 			}
@@ -253,11 +300,11 @@ fun MainScreen(vm: AppViewModel, snackbar: SnackbarHostState) {
 	}
 
 	if (choosingFilter) FilterDialog(vm, onDismiss = { choosingFilter = false })
-	if (newNote) {
-		NewNoteDialog(vm, initialPlace = vm.defaultPlace(), onCreate = { title, place, lane ->
-			newNote = false
+	newNote?.let { startLane ->
+		NewNoteDialog(vm, initialPlace = vm.defaultPlace(), initialLane = startLane, onCreate = { title, place, lane ->
+			newNote = null
 			vm.createNote(title, place, lane)
-		}, onDismiss = { newNote = false })
+		}, onDismiss = { newNote = null })
 	}
 	document?.let { (doc, name) ->
 		NewNoteDialog(
@@ -303,15 +350,29 @@ fun MainScreen(vm: AppViewModel, snackbar: SnackbarHostState) {
 	}
 }
 
+/** The grey body of a lane (Trello list), around a card or a line. */
+@Composable
+private fun ListBody(content: @Composable () -> Unit) {
+	Box(
+		Modifier
+			.fillMaxWidth()
+			.padding(horizontal = Tokens.Space.s100)
+			.background(trello.list)
+			.padding(horizontal = Tokens.Space.s100, vertical = Tokens.Space.s050),
+	) { content() }
+}
+
+/** The title of a lane: the top of a Trello list (the whole list when closed). */
 @Composable
 private fun LaneHeader(row: MainRow.LaneHeader, onToggle: () -> Unit) {
-	val lane = Model.LANES.first { it.id == row.laneId }
 	Row(
 		verticalAlignment = Alignment.CenterVertically,
 		modifier = Modifier
 			.fillMaxWidth()
+			.padding(start = Tokens.Space.s100, end = Tokens.Space.s100, top = Tokens.Space.s150)
+			.clip(if (row.open) Tokens.Radius.listTop else Tokens.Radius.list)
+			.background(trello.list)
 			.heightIn(min = 56.dp)
-			.background(MaterialTheme.colorScheme.surfaceVariant)
 			.clickable(onClickLabel = if (row.open) "fechar" else "abrir", role = Role.Button, onClick = onToggle)
 			.onPreviewKeyEvent { e ->
 				if (e.type != KeyEventType.KeyDown) return@onPreviewKeyEvent false
@@ -323,20 +384,63 @@ private fun LaneHeader(row: MainRow.LaneHeader, onToggle: () -> Unit) {
 			}
 			.semantics(mergeDescendants = true) {
 				heading()
+				contentDescription = Texts.laneNode(row.laneId, row.count)
 				stateDescription = if (row.open) "aberta" else "fechada"
 			}
-			.padding(horizontal = 12.dp),
+			.padding(horizontal = Tokens.Space.s150),
 	) {
-		Icon(
-			if (row.open) Icons.Filled.KeyboardArrowDown else Icons.AutoMirrored.Filled.KeyboardArrowRight,
-			contentDescription = null,
+		Box(
+			Modifier
+				.width(Tokens.Size.labelWidth)
+				.height(Tokens.Size.labelHeight)
+				.clip(Tokens.Radius.label)
+				.background(laneColor(row.laneId)),
 		)
-		Box(Modifier.padding(horizontal = 8.dp).width(6.dp).height(24.dp).background(laneColor(lane.color)))
-		Text(Texts.laneNode(row.laneId, row.count), style = MaterialTheme.typography.titleMedium)
+		Spacer(Modifier.width(Tokens.Space.s150))
+		Text(
+			Texts.laneName(row.laneId),
+			style = MaterialTheme.typography.titleSmall,
+			color = trello.text,
+			modifier = Modifier.weight(1f),
+		)
+		Text(
+			"${row.count}",
+			style = MaterialTheme.typography.labelMedium,
+			color = trello.textSubtle,
+			modifier = Modifier.padding(horizontal = Tokens.Space.s100),
+		)
+		Icon(
+			if (row.open) Icons.Outlined.KeyboardArrowDown else Icons.AutoMirrored.Outlined.KeyboardArrowRight,
+			contentDescription = null,
+			tint = trello.textSubtle,
+		)
 	}
-	HorizontalDivider()
 }
 
+/** "+ Adicionar uma folha": the bottom of an open lane; creates a note already in this lane. */
+@Composable
+private fun AddNoteRow(laneId: String, onClick: () -> Unit) {
+	Row(
+		verticalAlignment = Alignment.CenterVertically,
+		modifier = Modifier
+			.fillMaxWidth()
+			.padding(horizontal = Tokens.Space.s100)
+			.clip(Tokens.Radius.listBottom)
+			.background(trello.list)
+			.padding(horizontal = Tokens.Space.s100, vertical = Tokens.Space.s050)
+			.clip(Tokens.Radius.button)
+			.heightIn(min = Tokens.Size.touch)
+			.clickable(role = Role.Button, onClick = onClick)
+			.semantics(mergeDescendants = true) { contentDescription = "Adicionar uma folha em ${Texts.laneName(laneId)}" }
+			.padding(horizontal = Tokens.Space.s100),
+	) {
+		Icon(Icons.Outlined.Add, contentDescription = null, tint = trello.textSubtle)
+		Spacer(Modifier.width(Tokens.Space.s100))
+		Text("Adicionar uma folha", style = MaterialTheme.typography.labelLarge, color = trello.textSubtle)
+	}
+}
+
+/** A note: a white Trello card with the label of its lane, the title, a preview and the details. */
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun NoteItem(vm: AppViewModel, note: Note, onDelete: () -> Unit, onMove: () -> Unit, onExport: () -> Unit) {
@@ -344,6 +448,7 @@ private fun NoteItem(vm: AppViewModel, note: Note, onDelete: () -> Unit, onMove:
 	val place = Texts.placeOf(store, note)
 	val description = Texts.noteDescription(note, place)
 	val focus = remember { FocusRequester() }
+	var focused by remember { mutableStateOf(false) }
 	var menu by remember { mutableStateOf(false) }
 	val next = Model.neighbourLane(note.laneId, 1)
 	val previous = Model.neighbourLane(note.laneId, -1)
@@ -371,47 +476,84 @@ private fun NoteItem(vm: AppViewModel, note: Note, onDelete: () -> Unit, onMove:
 		add(CustomAccessibilityAction("Excluir") { onDelete(); true })
 	}
 
-	Box {
-		Row(
-			modifier = Modifier
-				.fillMaxWidth()
-				.focusRequester(focus)
-				.onPreviewKeyEvent { e ->
-					if (e.type != KeyEventType.KeyDown) return@onPreviewKeyEvent false
-					when {
-						e.isAltPressed && e.isShiftPressed && e.key == Key.DirectionRight -> { vm.stepStatus(note.id, 1); true }
-						e.isAltPressed && e.isShiftPressed && e.key == Key.DirectionLeft -> { vm.stepStatus(note.id, -1); true }
-						e.isCtrlPressed && e.isShiftPressed && e.key == Key.DirectionUp -> { vm.moveInLane(note.id, -1); true }
-						e.isCtrlPressed && e.isShiftPressed && e.key == Key.DirectionDown -> { vm.moveInLane(note.id, 1); true }
-						e.key == Key.Delete -> { onDelete(); true }
-						else -> false
-					}
-				}
-				.combinedClickable(
-					onClickLabel = "abrir",
-					onLongClickLabel = "mais opções",
-					onLongClick = { menu = true },
-					onClick = { vm.openNote(note.id) },
-				)
-				.semantics(mergeDescendants = true) {
-					contentDescription = description
-					customActions = actions
-				}
-				.padding(start = 16.dp, end = 4.dp, top = 8.dp, bottom = 8.dp),
-			verticalAlignment = Alignment.CenterVertically,
+	Box(Modifier.padding(vertical = Tokens.Space.s025)) {
+		Surface(
+			shape = Tokens.Radius.card,
+			color = trello.card,
+			contentColor = trello.text,
+			shadowElevation = Tokens.Elevation.card,
+			// The focus ring of Trello, for the keyboard.
+			border = if (focused) BorderStroke(2.dp, trello.focus) else null,
+			modifier = Modifier.fillMaxWidth(),
 		) {
-			Column(Modifier.weight(1f)) {
-				Text(Texts.noteTitle(note), fontWeight = FontWeight.SemiBold, maxLines = 2, overflow = TextOverflow.Ellipsis)
-				val preview = remember(note.content) { Markup.preview(note.content) }
-				if (preview.isNotEmpty()) {
-					Text(preview, style = MaterialTheme.typography.bodySmall, maxLines = 1, overflow = TextOverflow.Ellipsis)
+			Row(
+				modifier = Modifier
+					.fillMaxWidth()
+					.focusRequester(focus)
+					.onFocusChanged { focused = it.isFocused }
+					.onPreviewKeyEvent { e ->
+						if (e.type != KeyEventType.KeyDown) return@onPreviewKeyEvent false
+						when {
+							e.isAltPressed && e.isShiftPressed && e.key == Key.DirectionRight -> { vm.stepStatus(note.id, 1); true }
+							e.isAltPressed && e.isShiftPressed && e.key == Key.DirectionLeft -> { vm.stepStatus(note.id, -1); true }
+							e.isCtrlPressed && e.isShiftPressed && e.key == Key.DirectionUp -> { vm.moveInLane(note.id, -1); true }
+							e.isCtrlPressed && e.isShiftPressed && e.key == Key.DirectionDown -> { vm.moveInLane(note.id, 1); true }
+							e.key == Key.Delete -> { onDelete(); true }
+							else -> false
+						}
+					}
+					.combinedClickable(
+						onClickLabel = "abrir",
+						onLongClickLabel = "mais opções",
+						onLongClick = { menu = true },
+						onClick = { vm.openNote(note.id) },
+					)
+					.semantics(mergeDescendants = true) {
+						contentDescription = description
+						customActions = actions
+					}
+					.padding(start = Tokens.Space.s150, end = Tokens.Space.s050, top = Tokens.Space.s100, bottom = Tokens.Space.s100),
+				verticalAlignment = Alignment.CenterVertically,
+			) {
+				Column(Modifier.weight(1f)) {
+					Box(
+						Modifier
+							.padding(bottom = Tokens.Space.s075)
+							.width(Tokens.Size.labelWidth)
+							.height(Tokens.Size.labelHeight)
+							.clip(Tokens.Radius.label)
+							.background(laneColor(note.laneId)),
+					)
+					Text(
+						Texts.noteTitle(note),
+						style = MaterialTheme.typography.bodyMedium,
+						fontWeight = FontWeight.Medium,
+						color = trello.text,
+						maxLines = 2,
+						overflow = TextOverflow.Ellipsis,
+					)
+					val preview = remember(note.content) { Markup.preview(note.content) }
+					if (preview.isNotEmpty()) {
+						Text(
+							preview,
+							style = MaterialTheme.typography.bodySmall,
+							color = trello.textSubtle,
+							maxLines = 1,
+							overflow = TextOverflow.Ellipsis,
+						)
+					}
+					val meta = listOf(place, Texts.formatDate(note.updatedAt)).filter { it.isNotEmpty() }.joinToString(" · ")
+					Text(
+						meta,
+						style = MaterialTheme.typography.labelSmall,
+						color = trello.textSubtlest,
+						modifier = Modifier.padding(top = Tokens.Space.s050),
+					)
 				}
-				val meta = listOf(place, Texts.formatDate(note.updatedAt)).filter { it.isNotEmpty() }.joinToString(" · ")
-				Text(meta, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-			}
-			// The actions are already in the TalkBack actions menu: the button is only for sight.
-			IconButton(onClick = { menu = true }, modifier = Modifier.clearAndSetSemantics { }) {
-				Icon(Icons.Filled.MoreVert, contentDescription = null)
+				// The actions are already in the TalkBack actions menu: the button is only for sight.
+				IconButton(onClick = { menu = true }, modifier = Modifier.clearAndSetSemantics { }) {
+					Icon(Icons.Outlined.MoreVert, contentDescription = null, tint = trello.textSubtle)
+				}
 			}
 		}
 		DropdownMenu(expanded = menu, onDismissRequest = { menu = false }) {
@@ -425,7 +567,6 @@ private fun NoteItem(vm: AppViewModel, note: Note, onDelete: () -> Unit, onMove:
 			DropdownMenuItem(text = { Text("Excluir") }, onClick = { menu = false; onDelete() })
 		}
 	}
-	HorizontalDivider()
 }
 
 /** Show: all notes, loose, recent, each folder (closed, with its notebooks inside), then the
@@ -484,7 +625,7 @@ private fun FilterDialog(vm: AppViewModel, onDismiss: () -> Unit) {
 			}
 		},
 		confirmButton = {},
-		dismissButton = { TextButton(onClick = onDismiss) { Text("Fechar") } },
+		dismissButton = { TextButton(shape = Tokens.Radius.button, onClick = onDismiss) { Text("Fechar") } },
 	)
 }
 
