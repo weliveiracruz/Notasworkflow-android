@@ -87,11 +87,9 @@ fun SearchScreen(vm: AppViewModel, snackbar: SnackbarHostState) {
 			TopAppBar(
 				colors = trelloTopBarColors(),
 				title = { Text("Buscar folhas") },
-				navigationIcon = {
-					IconButton(onClick = { vm.back() }) { Icon(Icons.AutoMirrored.Outlined.ArrowBack, contentDescription = "Fechar") }
-				},
 			)
 		},
+		bottomBar = { BottomTabs(vm) },
 	) { padding ->
 		Column(Modifier.fillMaxSize().padding(padding).padding(horizontal = 16.dp)) {
 			OutlinedTextField(

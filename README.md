@@ -22,7 +22,7 @@ O formato do arquivo é o mesmo do complemento e do aplicativo web (`notas-workf
 
 ## Visual
 
-O visual segue o Trello: cores, tipografia, espaçamento, cantos e sombras em tokens (`ui/Theme.kt`) com a paleta do Atlassian Design System, em tema claro e escuro. O fundo azul é o quadro, as raias são listas cinzas e as folhas são cartões brancos com a etiqueta da cor da raia. Os ícones são Material Symbols Outlined (de linha, como os do Trello). A tela principal tem o botão **Nova folha** e cada raia aberta termina com **Adicionar uma folha**.
+O visual segue o Trello: cores, tipografia, espaçamento, cantos e sombras em tokens (`ui/Theme.kt`) com a paleta do Atlassian Design System, em tema claro e escuro. O fundo azul é o quadro, as raias são listas cinzas e as folhas são cartões brancos com a etiqueta da cor da raia. Os ícones são Material Symbols Outlined (de linha, como os do Trello). Na parte de baixo ficam as abas **Folhas**, **Buscar**, **Cadernos e pastas** e **Mais**. A tela principal tem o botão **Nova folha** e cada raia aberta termina com **Adicionar uma folha**.
 
 ## Estrutura
 

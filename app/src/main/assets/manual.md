@@ -1,14 +1,24 @@
 # Manual de uso do NotasWorkflow para Android
 
-Versão 1.12.1, com as mesmas funções do complemento Notas Workflow NVDA 1.12.0.
+Versão 1.12.2, com as mesmas funções do complemento Notas Workflow NVDA 1.12.0.
 
 O NotasWorkflow organiza folhas (anotações e tarefas) em quatro raias de status: **A fazer**, **Em andamento**, **Bloqueada** e **Concluída**. As folhas podem ficar soltas, direto numa pasta ou num caderno, e um caderno pode estar dentro de uma pasta. Tudo funciona com o TalkBack, com o toque e com um teclado físico.
 
+## As abas
+
+Na parte de baixo da tela ficam quatro abas. O TalkBack fala cada uma como guia, com a posição e se está selecionada:
+
+- **Folhas**: o quadro com as raias (a tela principal).
+- **Buscar**: a busca nas folhas.
+- **Cadernos e pastas**: organizar cadernos e pastas.
+- **Mais**: Exportar, Quantas folhas em cada raia, Configurações e Manual de uso.
+
+Em qualquer aba, o botão Voltar leva para a aba Folhas.
+
 ## A tela principal
 
-A tela principal tem, de cima para baixo:
+A aba **Folhas** tem, de cima para baixo:
 
-- **Buscar** e **Mais opções**, na barra do topo.
 - O botão **Nova folha**, que abre a janela Nova folha na hora.
 - O botão **Mostrar**, que diz o que está sendo mostrado e quantas folhas há. Ele abre uma lista com Todas as folhas, Folhas soltas, Folhas recentes (as 10 alteradas por último), cada pasta com os cadernos dela dentro e os cadernos sem pasta. As pastas começam fechadas: o botão ao lado de cada pasta abre e fecha. Escolher um item mostra as folhas dele.
 - As quatro raias, como títulos ("A fazer, 3 folhas"). Com o TalkBack, deslize com dois dedos ou use a navegação por títulos para ir de uma raia a outra. As raias começam fechadas: toque duas vezes para abrir ou fechar. Com teclado, Seta para a direita abre e Seta para a esquerda fecha.
@@ -31,9 +41,8 @@ O TalkBack fala o título, o lugar (caderno ou pasta) e a data da última altera
 
 Com teclado físico: **Alt+Shift+Seta para a direita** e **Alt+Shift+Seta para a esquerda** mudam o status, **Ctrl+Shift+Seta para cima** e **Ctrl+Shift+Seta para baixo** sobem e descem a folha na raia, **Delete** exclui e **Enter** abre.
 
-### Mais opções
+### A aba Mais
 
-- **Cadernos e pastas…**
 - **Exportar…**: exporta um caderno ou uma pasta.
 - **Quantas folhas em cada raia**: o TalkBack fala o número de folhas de cada raia do que está sendo mostrado.
 - **Configurações…**
@@ -81,11 +90,11 @@ O conteúdo é texto com uma marcação leve, a mesma do complemento do NVDA:
 
 ## Busca
 
-**Buscar**, na barra do topo, procura no título e no conteúdo enquanto você digita, sem diferenciar acentos e maiúsculas: "acao" encontra "Ação". O TalkBack fala quantas folhas foram encontradas. Cada resultado tem o título, um trecho do texto, a relevância e a data; tocar duas vezes abre a folha.
+A aba **Buscar** procura no título e no conteúdo enquanto você digita, sem diferenciar acentos e maiúsculas: "acao" encontra "Ação". O TalkBack fala quantas folhas foram encontradas. Cada resultado tem o título, um trecho do texto, a relevância e a data; tocar duas vezes abre a folha.
 
 ## Cadernos e pastas
 
-A tela **Cadernos e pastas** mostra cada pasta com os seus cadernos e as suas folhas, um ramo **Sem pasta** com os outros cadernos e um ramo **Folhas soltas**. Os ramos começam fechados: toque duas vezes para abrir ou fechar. Tocar duas vezes numa folha abre a folha.
+A aba **Cadernos e pastas** mostra cada pasta com os seus cadernos e as suas folhas, um ramo **Sem pasta** com os outros cadernos e um ramo **Folhas soltas**. Os ramos começam fechados: toque duas vezes para abrir ou fechar. Tocar duas vezes numa folha abre a folha.
 
 As ações de cada item ficam no menu de ações do TalkBack e no toque longo:
 
@@ -109,7 +118,7 @@ Uma folha guarda até 1 MB: documentos maiores são cortados, com aviso. Arquivo
 
 ## Exportar como documento
 
-**Exportar…** (no menu de uma folha, de um caderno ou de uma pasta, ou em Mais opções) pergunta o formato: **Documento do Word (.docx)**, **Markdown (.md)** ou **Página HTML (.html)**. Um caderno ou uma pasta pode ir para **Um arquivo com todas as folhas** ou para **Um arquivo para cada folha**: neste caso você escolhe uma pasta e é criada dentro dela uma pasta nova com o nome do caderno ou da pasta, com uma subpasta para cada caderno.
+**Exportar…** (no menu de uma folha, de um caderno ou de uma pasta, ou na aba Mais) pergunta o formato: **Documento do Word (.docx)**, **Markdown (.md)** ou **Página HTML (.html)**. Um caderno ou uma pasta pode ir para **Um arquivo com todas as folhas** ou para **Um arquivo para cada folha**: neste caso você escolhe uma pasta e é criada dentro dela uma pasta nova com o nome do caderno ou da pasta, com uma subpasta para cada caderno.
 
 Cada folha leva o título, o status, o local, as datas e o conteúdo com a formatação; os títulos são títulos de verdade, fáceis de navegar com um leitor de telas. Nada é sobrescrito: um nome repetido ganha "(2)". O TalkBack fala quantas folhas foram exportadas e onde.
 
@@ -134,5 +143,6 @@ O aplicativo não usa a internet: nenhuma folha sai do aparelho, a não ser para
 
 ## Histórico deste manual
 
+- 1.12.2: abas na parte de baixo (Folhas, Buscar, Cadernos e pastas, Mais) no lugar das opções do topo.
 - 1.12.1: visual do Trello (cores, tipografia, cartões e ícones de linha); botão Nova folha na tela principal e Adicionar uma folha no fim de cada raia.
 - 1.12.0: primeira versão para Android, com as funções do complemento Notas Workflow NVDA 1.12.0.

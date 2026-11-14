@@ -59,6 +59,9 @@ data class TrelloColors(
 	/** color.border.focused: the focus ring. */
 	val focus: Color,
 	val danger: Color,
+	/** The selected tab (color.background.selected and color.text.selected). */
+	val selected: Color,
+	val onSelected: Color,
 	/** Label colours of Trello, one for each lane: blue, orange, red, green. */
 	val laneTodo: Color,
 	val laneInProgress: Color,
@@ -85,6 +88,8 @@ val LightTrello = TrelloColors(
 	border = Color(0x24091E42),
 	focus = Color(0xFF388BFF),
 	danger = Color(0xFFC9372C),
+	selected = Color(0xFFE9F2FF),
+	onSelected = Color(0xFF0C66E4),
 	laneTodo = Color(0xFF579DFF),
 	laneInProgress = Color(0xFFFEA362),
 	laneBlocked = Color(0xFFF87168),
@@ -109,6 +114,8 @@ val DarkTrello = TrelloColors(
 	border = Color(0x29A6C5E2),
 	focus = Color(0xFF85B8FF),
 	danger = Color(0xFFF87168),
+	selected = Color(0xFF1C2B41),
+	onSelected = Color(0xFF579DFF),
 	laneTodo = Color(0xFF0055CC),
 	laneInProgress = Color(0xFFA54800),
 	laneBlocked = Color(0xFFAE2E24),

@@ -1,5 +1,9 @@
 # Histórico de versões
 
+## 1.12.2
+
+* Abas na parte de baixo do app: **Folhas**, **Buscar**, **Cadernos e pastas** e **Mais**, no lugar dos botões e do menu do topo. A aba Mais tem Exportar…, Quantas folhas em cada raia, Configurações… e Manual de uso…. O botão Voltar de qualquer aba leva para Folhas.
+
 ## 1.12.1
 
 * Visual do Trello: tokens de cor, tipografia, espaçamento, cantos e sombras da paleta do Atlassian Design System (quadro azul, raias como listas cinzas, folhas como cartões brancos com a etiqueta da raia), com tema claro e escuro.

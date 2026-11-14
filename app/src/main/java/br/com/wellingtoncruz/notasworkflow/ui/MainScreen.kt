@@ -130,7 +130,6 @@ fun MainScreen(vm: AppViewModel, snackbar: SnackbarHostState) {
 	val filter = vm.filter
 	val shown = remember { mutableStateMapOf<String, Int>() }
 
-	var menuOpen by remember { mutableStateOf(false) }
 	var createOpen by remember { mutableStateOf(false) }
 	var choosingFilter by remember { mutableStateOf(false) }
 	/** The lane of the new note being created, or null. */
@@ -138,7 +137,6 @@ fun MainScreen(vm: AppViewModel, snackbar: SnackbarHostState) {
 	var newNotebook by remember { mutableStateOf(false) }
 	var newFolder by remember { mutableStateOf(false) }
 	var document by remember { mutableStateOf<Pair<ImportedDocument, String>?>(null) }
-	var exportPicker by remember { mutableStateOf(false) }
 	var exportRequest by remember { mutableStateOf<ExportRequest?>(null) }
 	var deleting by remember { mutableStateOf<Note?>(null) }
 	var moving by remember { mutableStateOf<Note?>(null) }
@@ -185,21 +183,9 @@ fun MainScreen(vm: AppViewModel, snackbar: SnackbarHostState) {
 			TopAppBar(
 				colors = trelloTopBarColors(),
 				title = { Text(Texts.APP_NAME) },
-				actions = {
-					IconButton(onClick = { vm.open(Screen.SearchNotes) }) { Icon(Icons.Outlined.Search, contentDescription = "Buscar") }
-					Box {
-						IconButton(onClick = { menuOpen = true }) { Icon(Icons.Outlined.MoreVert, contentDescription = "Mais opções") }
-						DropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false }) {
-							DropdownMenuItem(text = { Text("Cadernos e pastas…") }, onClick = { menuOpen = false; vm.open(Screen.Organize) })
-							DropdownMenuItem(text = { Text("Exportar…") }, onClick = { menuOpen = false; exportPicker = true })
-							DropdownMenuItem(text = { Text("Quantas folhas em cada raia") }, onClick = { menuOpen = false; vm.say(vm.laneCounts()) })
-							DropdownMenuItem(text = { Text("Configurações…") }, onClick = { menuOpen = false; vm.open(Screen.Settings) })
-							DropdownMenuItem(text = { Text("Manual de uso…") }, onClick = { menuOpen = false; vm.open(Screen.Manual) })
-						}
-					}
-				},
 			)
 		},
+		bottomBar = { BottomTabs(vm) },
 		floatingActionButton = {
 			Box {
 				ExtendedFloatingActionButton(
@@ -323,9 +309,6 @@ fun MainScreen(vm: AppViewModel, snackbar: SnackbarHostState) {
 		}, onDismiss = { newNotebook = false })
 	}
 	if (newFolder) NewFolderDialog(vm, onCreated = { newFolder = false }, onDismiss = { newFolder = false })
-	if (exportPicker) {
-		ExportPicker(vm, onChosen = { exportPicker = false; exportRequest = it }, onDismiss = { exportPicker = false })
-	}
 	exportRequest?.let { ExportFlow(vm, it) { exportRequest = null } }
 	deleting?.let { note ->
 		ConfirmDialog(

@@ -216,13 +216,11 @@ fun OrganizeScreen(vm: AppViewModel, snackbar: SnackbarHostState) {
 
 	Scaffold(
 		snackbarHost = { SnackbarHost(snackbar) },
+		bottomBar = { BottomTabs(vm) },
 		topBar = {
 			TopAppBar(
 				colors = trelloTopBarColors(),
 				title = { Text("Cadernos e pastas") },
-				navigationIcon = {
-					IconButton(onClick = { vm.back() }) { Icon(Icons.AutoMirrored.Outlined.ArrowBack, contentDescription = "Fechar") }
-				},
 				actions = {
 					Box {
 						IconButton(onClick = { createMenu = true }) { Icon(Icons.Outlined.Add, contentDescription = "Criar…") }

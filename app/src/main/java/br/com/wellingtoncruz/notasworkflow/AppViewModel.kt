@@ -55,7 +55,13 @@ sealed class Screen {
 	data object Settings : Screen()
 
 	data object Manual : Screen()
+
+	/** The "More" tab: Export, the count of each lane, Settings and the manual. */
+	data object More : Screen()
 }
+
+/** The tabs at the bottom of the app, in order. */
+val TABS: List<Screen> = listOf(Screen.Main, Screen.SearchNotes, Screen.Organize, Screen.More)
 
 /** What an export writes: (heading or null, notes, subfolder name or null) for each section. */
 data class ExportPlan(
@@ -166,6 +172,14 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
 
 	fun open(screen: Screen) {
 		screens.add(screen)
+	}
+
+	/** Shows a tab: the notes tab is the base; every other tab goes on top of it, so Back returns to the notes. */
+	fun selectTab(tab: Screen) {
+		if (current == tab) return
+		screens.clear()
+		screens.add(Screen.Main)
+		if (tab != Screen.Main) screens.add(tab)
 	}
 
 	fun back() {
