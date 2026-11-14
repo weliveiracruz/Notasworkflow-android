@@ -383,7 +383,7 @@ private fun NoteItem(vm: AppViewModel, note: Note, onDelete: () -> Unit, onMove:
 						e.isAltPressed && e.isShiftPressed && e.key == Key.DirectionLeft -> { vm.stepStatus(note.id, -1); true }
 						e.isCtrlPressed && e.isShiftPressed && e.key == Key.DirectionUp -> { vm.moveInLane(note.id, -1); true }
 						e.isCtrlPressed && e.isShiftPressed && e.key == Key.DirectionDown -> { vm.moveInLane(note.id, 1); true }
-						e.key == Key.Delete || e.key == Key.ForwardDel -> { onDelete(); true }
+						e.key == Key.Delete -> { onDelete(); true }
 						else -> false
 					}
 				}

@@ -349,7 +349,7 @@ private fun TreeItem(row: TreeRow) {
 					if (e.type != KeyEventType.KeyDown) return@onPreviewKeyEvent false
 					when {
 						e.key == Key.F2 && row.onRename != null -> { row.onRename.invoke(); true }
-						(e.key == Key.Delete || e.key == Key.ForwardDel) && row.onDelete != null -> { row.onDelete.invoke(); true }
+						e.key == Key.Delete && row.onDelete != null -> { row.onDelete.invoke(); true }
 						e.key == Key.DirectionRight && row.open == false -> { row.onClick(); true }
 						e.key == Key.DirectionLeft && row.open == true -> { row.onClick(); true }
 						else -> false
