@@ -42,13 +42,20 @@ import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.unit.dp
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import br.com.wellingtoncruz.notasworkflow.AppViewModel
+import br.com.wellingtoncruz.notasworkflow.Screen
 import kotlin.math.roundToInt
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(vm: AppViewModel, snackbar: SnackbarHostState) {
 	BackHandler { vm.back() }
+	var exportPicker by remember { mutableStateOf(false) }
+	var exportRequest by remember { mutableStateOf<ExportRequest?>(null) }
 
 	val openData = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri -> if (uri != null) vm.useDocument(uri) }
 	val createData = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("application/json")) { uri ->
@@ -66,11 +73,9 @@ fun SettingsScreen(vm: AppViewModel, snackbar: SnackbarHostState) {
 			TopAppBar(
 				colors = trelloTopBarColors(),
 				title = { Text("Configurações") },
-				navigationIcon = {
-					IconButton(onClick = { vm.back() }) { Icon(Icons.AutoMirrored.Outlined.ArrowBack, contentDescription = "Fechar") }
-				},
 			)
 		},
+		bottomBar = { BottomTabs(vm) },
 	) { padding ->
 		Column(
 			Modifier.fillMaxSize().padding(padding).padding(horizontal = 16.dp).verticalScroll(rememberScrollState()),
@@ -135,8 +140,24 @@ fun SettingsScreen(vm: AppViewModel, snackbar: SnackbarHostState) {
 				style = MaterialTheme.typography.bodySmall,
 				modifier = Modifier.padding(vertical = 8.dp),
 			)
+
+			Heading("Ferramentas")
+			OutlinedButton(shape = Tokens.Radius.button, onClick = { exportPicker = true }, modifier = Modifier.fillMaxWidth()) {
+				Text("Exportar como documento…")
+			}
+			OutlinedButton(shape = Tokens.Radius.button, onClick = { vm.say(vm.laneCounts()) }, modifier = Modifier.fillMaxWidth()) {
+				Text("Quantas folhas em cada raia")
+			}
+			OutlinedButton(shape = Tokens.Radius.button, onClick = { vm.open(Screen.Manual) }, modifier = Modifier.fillMaxWidth()) {
+				Text("Manual de uso…")
+			}
 		}
 	}
+
+	if (exportPicker) {
+		ExportPicker(vm, onChosen = { exportPicker = false; exportRequest = it }, onDismiss = { exportPicker = false })
+	}
+	exportRequest?.let { ExportFlow(vm, it) { exportRequest = null } }
 }
 
 @Composable

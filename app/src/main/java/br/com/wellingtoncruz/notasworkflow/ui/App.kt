@@ -66,7 +66,7 @@ fun NotasWorkflowApp(vm: AppViewModel) {
 		is Screen.SearchNotes -> SearchScreen(vm, snackbar)
 		is Screen.Settings -> SettingsScreen(vm, snackbar)
 		is Screen.Manual -> ManualScreen(vm, snackbar)
-		is Screen.More -> MoreScreen(vm, snackbar)
+		is Screen.New -> NewScreen(vm, snackbar)
 	}
 }
 

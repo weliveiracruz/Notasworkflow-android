@@ -56,12 +56,12 @@ sealed class Screen {
 
 	data object Manual : Screen()
 
-	/** The "More" tab: Export, the count of each lane, Settings and the manual. */
-	data object More : Screen()
+	/** The "New" tab: create a note, a notebook, a folder or a note from a document. */
+	data object New : Screen()
 }
 
-/** The tabs at the bottom of the app, in order. */
-val TABS: List<Screen> = listOf(Screen.Main, Screen.SearchNotes, Screen.Organize, Screen.More)
+/** The tabs at the bottom of the app, in order: Home, New, Notebooks and folders, Search, Settings. */
+val TABS: List<Screen> = listOf(Screen.Main, Screen.New, Screen.Organize, Screen.SearchNotes, Screen.Settings)
 
 /** What an export writes: (heading or null, notes, subfolder name or null) for each section. */
 data class ExportPlan(

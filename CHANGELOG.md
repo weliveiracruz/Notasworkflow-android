@@ -1,5 +1,11 @@
 # Histórico de versões
 
+## 1.12.3
+
+* Cinco abas na parte de baixo: **Início** (todas as folhas), **Novo** (folha, caderno, pasta e folha a partir de documento), **Cadernos** (cadernos e pastas), **Buscar** e **Configurações**.
+* O botão Criar… do canto saiu: criar fica na aba Novo, no botão Nova folha e em Adicionar uma folha.
+* Exportar como documento, Quantas folhas em cada raia e Manual de uso ficam em Configurações, na seção Ferramentas.
+
 ## 1.12.2
 
 * Abas na parte de baixo do app: **Folhas**, **Buscar**, **Cadernos e pastas** e **Mais**, no lugar dos botões e do menu do topo. A aba Mais tem Exportar…, Quantas folhas em cada raia, Configurações… e Manual de uso…. O botão Voltar de qualquer aba leva para Folhas.

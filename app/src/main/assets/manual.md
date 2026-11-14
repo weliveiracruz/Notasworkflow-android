@@ -1,28 +1,28 @@
 # Manual de uso do NotasWorkflow para Android
 
-Versão 1.12.2, com as mesmas funções do complemento Notas Workflow NVDA 1.12.0.
+Versão 1.12.3, com as mesmas funções do complemento Notas Workflow NVDA 1.12.0.
 
 O NotasWorkflow organiza folhas (anotações e tarefas) em quatro raias de status: **A fazer**, **Em andamento**, **Bloqueada** e **Concluída**. As folhas podem ficar soltas, direto numa pasta ou num caderno, e um caderno pode estar dentro de uma pasta. Tudo funciona com o TalkBack, com o toque e com um teclado físico.
 
 ## As abas
 
-Na parte de baixo da tela ficam quatro abas. O TalkBack fala cada uma como guia, com a posição e se está selecionada:
+Na parte de baixo da tela ficam cinco abas. O TalkBack fala cada uma como guia, com a posição e se está selecionada:
 
-- **Folhas**: o quadro com as raias (a tela principal).
-- **Buscar**: a busca nas folhas.
-- **Cadernos e pastas**: organizar cadernos e pastas.
-- **Mais**: Exportar, Quantas folhas em cada raia, Configurações e Manual de uso.
+1. **Início**: todas as folhas, nas raias (a tela principal).
+2. **Novo**: criar uma folha, um caderno, uma pasta ou uma folha a partir de documento.
+3. **Cadernos** (o TalkBack fala "Cadernos e pastas"): organizar cadernos e pastas.
+4. **Buscar**: a busca nas folhas.
+5. **Configurações**: salvamento, arquivo das folhas, importar e exportar, e as ferramentas (Exportar como documento, Quantas folhas em cada raia e Manual de uso).
 
-Em qualquer aba, o botão Voltar leva para a aba Folhas.
+Em qualquer aba, o botão Voltar leva para a aba Início.
 
 ## A tela principal
 
-A aba **Folhas** tem, de cima para baixo:
+A aba **Início** tem, de cima para baixo:
 
 - O botão **Nova folha**, que abre a janela Nova folha na hora.
 - O botão **Mostrar**, que diz o que está sendo mostrado e quantas folhas há. Ele abre uma lista com Todas as folhas, Folhas soltas, Folhas recentes (as 10 alteradas por último), cada pasta com os cadernos dela dentro e os cadernos sem pasta. As pastas começam fechadas: o botão ao lado de cada pasta abre e fecha. Escolher um item mostra as folhas dele.
 - As quatro raias, como títulos ("A fazer, 3 folhas"). Com o TalkBack, deslize com dois dedos ou use a navegação por títulos para ir de uma raia a outra. As raias começam fechadas: toque duas vezes para abrir ou fechar. Com teclado, Seta para a direita abre e Seta para a esquerda fecha.
-- O botão **Criar…**, no canto de baixo.
 
 Cada raia mostra 200 folhas por vez; **Mostrar mais folhas**, no fim da raia, mostra as próximas. Uma raia aberta termina com **Adicionar uma folha**, que cria uma folha já nessa raia.
 
@@ -41,19 +41,12 @@ O TalkBack fala o título, o lugar (caderno ou pasta) e a data da última altera
 
 Com teclado físico: **Alt+Shift+Seta para a direita** e **Alt+Shift+Seta para a esquerda** mudam o status, **Ctrl+Shift+Seta para cima** e **Ctrl+Shift+Seta para baixo** sobem e descem a folha na raia, **Delete** exclui e **Enter** abre.
 
-### A aba Mais
-
-- **Exportar…**: exporta um caderno ou uma pasta.
-- **Quantas folhas em cada raia**: o TalkBack fala o número de folhas de cada raia do que está sendo mostrado.
-- **Configurações…**
-- **Manual de uso…**: este manual.
-
 ## Criar
 
-O botão **Nova folha**, no topo da tela principal, e **Adicionar uma folha**, no fim de cada raia aberta, abrem direto a janela Nova folha (a segunda já com o status da raia). O botão **Criar…** abre um menu com:
+O botão **Nova folha**, no topo da aba Início, e **Adicionar uma folha**, no fim de cada raia aberta, abrem direto a janela Nova folha (a segunda já com o status da raia). A aba **Novo** tem:
 
 - **Folha…**: pede o **Título**, o **Local** e o **Status**. O local já vem com o caderno ou a pasta que está sendo mostrada. Ao lado do local ficam **Novo caderno…** e **Nova pasta…**: o que você cria ali já fica escolhido como local. **Criar** cria a folha e abre a janela dela, no conteúdo.
-- **Caderno…**: pede o **Nome** e a **Pasta** (Nenhuma pasta ou uma das pastas), com **Nova pasta…**.
+- **Caderno…**: pede o **Nome** e a **Pasta** (Nenhuma pasta ou uma das pastas), com **Nova pasta…**. Depois de criado, a aba Início mostra o caderno novo, pronto para a primeira folha.
 - **Pasta…**: pede o nome da nova pasta.
 - **Folha a partir de documento…**: veja abaixo.
 
@@ -102,13 +95,13 @@ As ações de cada item ficam no menu de ações do TalkBack e no toque longo:
 - Caderno: **Criar folha aqui…**, **Renomear…**, **Mover para…** (outra pasta ou Sem pasta), **Exportar…** e **Excluir**.
 - Folha: **Abrir**, **Renomear…** (muda o título), **Mover para…**, **Exportar…** e **Excluir**.
 
-Com teclado físico, **F2** renomeia e **Delete** exclui. O botão **Criar…** no topo cria uma folha, um caderno ou uma pasta.
+Com teclado físico, **F2** renomeia e **Delete** exclui. O botão **Criar…** no topo da aba cria uma folha, um caderno ou uma pasta.
 
 Excluir um caderno exclui também as folhas dele. Excluir uma pasta exclui os cadernos dela, as folhas desses cadernos e as folhas guardadas direto nela. A pergunta diz quanto será excluído: "Excluir a pasta Projetos e tudo o que está nela: 2 cadernos e 5 folhas? Isso não pode ser desfeito."
 
 ## Folha a partir de documento
 
-**Criar… > Folha a partir de documento…** pede um arquivo do Word (.docx), do PowerPoint (.pptx), de texto (.txt), uma página HTML ou um e-mail (.eml). O documento é lido em segundo plano e a janela Nova folha já vem com o título dele (ou o assunto do e-mail); a folha nasce com o texto no conteúdo.
+**Novo > Folha a partir de documento…** pede um arquivo do Word (.docx), do PowerPoint (.pptx), de texto (.txt), uma página HTML ou um e-mail (.eml). O documento é lido em segundo plano e a janela Nova folha já vem com o título dele (ou o assunto do e-mail); a folha nasce com o texto no conteúdo.
 
 Títulos, listas, negrito, itálico e tachado continuam. Cada slide vira um título, com as anotações do orador; cada linha de tabela vira uma linha ("a | b"); um e-mail começa com De, Para, Cc, Data e Anexos. Imagens não vêm.
 
@@ -118,7 +111,7 @@ Uma folha guarda até 1 MB: documentos maiores são cortados, com aviso. Arquivo
 
 ## Exportar como documento
 
-**Exportar…** (no menu de uma folha, de um caderno ou de uma pasta, ou na aba Mais) pergunta o formato: **Documento do Word (.docx)**, **Markdown (.md)** ou **Página HTML (.html)**. Um caderno ou uma pasta pode ir para **Um arquivo com todas as folhas** ou para **Um arquivo para cada folha**: neste caso você escolhe uma pasta e é criada dentro dela uma pasta nova com o nome do caderno ou da pasta, com uma subpasta para cada caderno.
+**Exportar…** (no menu de uma folha, de um caderno ou de uma pasta, ou em Configurações > Exportar como documento…) pergunta o formato: **Documento do Word (.docx)**, **Markdown (.md)** ou **Página HTML (.html)**. Um caderno ou uma pasta pode ir para **Um arquivo com todas as folhas** ou para **Um arquivo para cada folha**: neste caso você escolhe uma pasta e é criada dentro dela uma pasta nova com o nome do caderno ou da pasta, com uma subpasta para cada caderno.
 
 Cada folha leva o título, o status, o local, as datas e o conteúdo com a formatação; os títulos são títulos de verdade, fáceis de navegar com um leitor de telas. Nada é sobrescrito: um nome repetido ganha "(2)". O TalkBack fala quantas folhas foram exportadas e onde.
 
@@ -128,6 +121,7 @@ Cada folha leva o título, o status, o local, as datas e o conteúdo com a forma
 - **Anunciar o salvamento automático**: o TalkBack fala "Folha salva" a cada salvamento automático.
 - **Arquivo das folhas**: por padrão as folhas ficam no armazenamento do aparelho. **Abrir arquivo de folhas…** usa um arquivo que já existe e **Criar arquivo de folhas…** cria um novo com as folhas atuais. **Usar o armazenamento do aparelho** volta ao padrão.
 - **Importar folhas…** e **Exportar folhas…**: um arquivo .json com todas as folhas, cadernos e pastas.
+- **Ferramentas**: **Exportar como documento…** (um caderno ou uma pasta), **Quantas folhas em cada raia** (o TalkBack fala o número de folhas de cada raia do que está sendo mostrado no Início) e **Manual de uso…** (este manual).
 
 ### As mesmas folhas no celular e no computador
 
@@ -143,6 +137,7 @@ O aplicativo não usa a internet: nenhuma folha sai do aparelho, a não ser para
 
 ## Histórico deste manual
 
+- 1.12.3: cinco abas: Início, Novo, Cadernos, Buscar e Configurações.
 - 1.12.2: abas na parte de baixo (Folhas, Buscar, Cadernos e pastas, Mais) no lugar das opções do topo.
 - 1.12.1: visual do Trello (cores, tipografia, cartões e ícones de linha); botão Nova folha na tela principal e Adicionar uma folha no fim de cada raia.
 - 1.12.0: primeira versão para Android, com as funções do complemento Notas Workflow NVDA 1.12.0.

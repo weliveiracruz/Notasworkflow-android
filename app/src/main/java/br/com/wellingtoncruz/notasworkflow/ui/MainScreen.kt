@@ -130,20 +130,13 @@ fun MainScreen(vm: AppViewModel, snackbar: SnackbarHostState) {
 	val filter = vm.filter
 	val shown = remember { mutableStateMapOf<String, Int>() }
 
-	var createOpen by remember { mutableStateOf(false) }
 	var choosingFilter by remember { mutableStateOf(false) }
 	/** The lane of the new note being created, or null. */
 	var newNote by remember { mutableStateOf<String?>(null) }
-	var newNotebook by remember { mutableStateOf(false) }
-	var newFolder by remember { mutableStateOf(false) }
-	var document by remember { mutableStateOf<Pair<ImportedDocument, String>?>(null) }
 	var exportRequest by remember { mutableStateOf<ExportRequest?>(null) }
 	var deleting by remember { mutableStateOf<Note?>(null) }
 	var moving by remember { mutableStateOf<Note?>(null) }
 
-	val openDocument = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
-		if (uri != null) vm.readDocument(uri) { doc, name -> document = doc to name }
-	}
 
 	val rows: List<MainRow> = remember(revision, filter, vm.openLanes.toMap(), shown.toMap(), vm.loaded) {
 		if (!vm.loaded) return@remember emptyList()
@@ -186,27 +179,6 @@ fun MainScreen(vm: AppViewModel, snackbar: SnackbarHostState) {
 			)
 		},
 		bottomBar = { BottomTabs(vm) },
-		floatingActionButton = {
-			Box {
-				ExtendedFloatingActionButton(
-					onClick = { createOpen = true },
-					containerColor = trello.primary,
-					contentColor = trello.onPrimary,
-					shape = Tokens.Radius.card,
-					icon = { Icon(Icons.Outlined.Add, contentDescription = null) },
-					text = { Text("Criar…") },
-				)
-				DropdownMenu(expanded = createOpen, onDismissRequest = { createOpen = false }) {
-					DropdownMenuItem(text = { Text("Folha…") }, onClick = { createOpen = false; newNote = Model.DEFAULT_LANE })
-					DropdownMenuItem(text = { Text("Caderno…") }, onClick = { createOpen = false; newNotebook = true })
-					DropdownMenuItem(text = { Text("Pasta…") }, onClick = { createOpen = false; newFolder = true })
-					DropdownMenuItem(
-						text = { Text("Folha a partir de documento…") },
-						onClick = { createOpen = false; openDocument.launch(DOCUMENT_TYPES) },
-					)
-				}
-			}
-		},
 	) { padding ->
 		Column(Modifier.fillMaxSize().padding(padding)) {
 			if (!vm.loaded) {
@@ -292,23 +264,6 @@ fun MainScreen(vm: AppViewModel, snackbar: SnackbarHostState) {
 			vm.createNote(title, place, lane)
 		}, onDismiss = { newNote = null })
 	}
-	document?.let { (doc, name) ->
-		NewNoteDialog(
-			vm, initialTitle = doc.title, initialPlace = vm.defaultPlace(), caption = "Nova folha a partir de documento",
-			onCreate = { title, place, lane ->
-				document = null
-				vm.createNote(title, place, lane, doc.text, name)
-			},
-			onDismiss = { document = null },
-		)
-	}
-	if (newNotebook) {
-		NewNotebookDialog(vm, initialFolder = if (filter.kind == "folder") filter.id else null, onCreated = { nb ->
-			newNotebook = false
-			vm.filter = NoteFilter.notebook(nb.id)
-		}, onDismiss = { newNotebook = false })
-	}
-	if (newFolder) NewFolderDialog(vm, onCreated = { newFolder = false }, onDismiss = { newFolder = false })
 	exportRequest?.let { ExportFlow(vm, it) { exportRequest = null } }
 	deleting?.let { note ->
 		ConfirmDialog(
