@@ -1,0 +1,34 @@
+{
+ "a.docx": [
+  "Relatório trimestral",
+  "# Relatório\n# Resumo\nTexto com **negrito** e *itálico* e ~~riscado~~.\n## Metas\n- Primeiro\n- Segundo\n1. Passo um\n2. Passo dois\nantes depois\nlinha nova\nMês | Valor\nJaneiro | 10"
+ ],
+ "b.pptx": [
+  "b",
+  "## Slide 1: Apresentação\nSubtítulo\n## Slide 2: Agenda\n- Ponto A\n- Ponto B\nSem marcador\nAnotações do orador:\n> Falar devagar\n## Slide 3\nCaixa de texto\n1. Um\n2. Dois\nA | B"
+ ],
+ "c.eml": [
+  "Reunião de segunda",
+  "**De:** Ana <ana@example.com>\n**Para:** Bruno <bruno@example.com>\n**Cc:** Carla <carla@example.com>\n**Data:** 12/10/2026 14:30\n**Anexos:** pauta.pdf\n---\n## Pauta\n- **Orçamento**\n- Prazos"
+ ],
+ "d.eml": [
+  "Reunião de segunda",
+  "**De:** Ana <ana@example.com>\n**Para:** Bruno <bruno@example.com>\n**Cc:** Carla <carla@example.com>\n**Data:** 12/10/2026 14:30\n---\nOlá,\nsegue a pauta."
+ ],
+ "e.html": [
+  "Página de teste",
+  "# Título\nUm **texto** com espaços.\nA | B\n1 | 2"
+ ],
+ "f.html": [
+  "Página de teste",
+  "# Título\nUm **texto** com espaços.\nA | B\n1 | 2"
+ ],
+ "g.txt": [
+  "g",
+  "olá\nmundo\n- item"
+ ],
+ "h.docx": [
+  "T",
+  "# T\nStatus: A fazer\n## a\n- b\n1. c\nd\n**e** *f*"
+ ]
+}

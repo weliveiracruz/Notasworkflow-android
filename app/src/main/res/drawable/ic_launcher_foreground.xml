@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Four lanes (the four status colours) on a sheet. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+	android:width="108dp"
+	android:height="108dp"
+	android:viewportWidth="108"
+	android:viewportHeight="108">
+	<path android:fillColor="#FFFFFF" android:pathData="M32,28h44a4,4 0,0 1,4 4v44a4,4 0,0 1,-4 4h-44a4,4 0,0 1,-4 -4v-44a4,4 0,0 1,4 -4z" />
+	<path android:fillColor="#007AFF" android:pathData="M36,36h7v36h-7z" />
+	<path android:fillColor="#FF9500" android:pathData="M46,36h7v26h-7z" />
+	<path android:fillColor="#FF2D55" android:pathData="M56,36h7v16h-7z" />
+	<path android:fillColor="#34C759" android:pathData="M66,36h7v30h-7z" />
+</vector>

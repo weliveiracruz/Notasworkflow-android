@@ -1,0 +1,38 @@
+Subject: =?utf-8?q?Reuni=C3=A3o?= de segunda
+From: Ana <ana@example.com>
+To: Bruno <bruno@example.com>
+Cc: Carla <carla@example.com>
+Date: Mon, 12 Oct 2026 14:30:00 -0300
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============8503221186098569765=="
+
+--===============8503221186098569765==
+Content-Type: multipart/alternative;
+ boundary="===============1756524579053941803=="
+
+--===============1756524579053941803==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Olá,
+segue a pauta.
+
+--===============1756524579053941803==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><h2>Pauta</h2><ul><li><b>Or=C3=A7amento</b></li><li>Prazos</li></=
+ul><script>alert(1)</script></body></html>
+
+--===============1756524579053941803==--
+
+--===============8503221186098569765==
+Content-Type: application/pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="pauta.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQ=
+
+--===============8503221186098569765==--

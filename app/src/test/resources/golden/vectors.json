@@ -1,0 +1,3166 @@
+{
+"t2h": {
+"## Título\nTexto com **negrito**, *itálico*, ~~tachado~~ e `código`.\n- um\n- dois\n1. a\n2. b\n> citação\n> segunda\n---\n```\ncode <x> & y\n  indent\n```\nfim 2*3*4 e a<b & c>d": "<h2>Título</h2><p>Texto com <strong>negrito</strong>, <em>itálico</em>, <s>tachado</s> e <code>código</code>.</p><ul><li><p>um</p></li><li><p>dois</p></li></ul><ol><li><p>a</p></li><li><p>b</p></li></ol><blockquote><p>citação</p><p>segunda</p></blockquote><hr><pre><code>code &lt;x&gt; &amp; y\n  indent</code></pre><p>fim 2*3*4 e a&lt;b &amp; c&gt;d</p>",
+"### Só título\n\n\nlinha após vazias\n5. começa em cinco\n6. seis": "<h3>Só título</h3><p></p><p></p><p>linha após vazias</p><ol start=\"5\"><li><p>começa em cinco</p></li><li><p>seis</p></li></ol>",
+"* item estrela\n- item\ntexto **a** **b** *c d* ~~x~~ `a*b`": "<ul><li><p>item estrela</p></li><li><p>item</p></li></ul><p>texto <strong>a</strong> <strong>b</strong> <em>c d</em> <s>x</s> <code>a*b</code></p>",
+"": "",
+"Linha simples": "<p>Linha simples</p>",
+"# H1\n#### H4\n###### H6\n####### não é": "<h1>H1</h1><h4>H4</h4><h6>H6</h6><p>####### não é</p>",
+"> \n>q": "<blockquote><p></p><p>q</p></blockquote>"
+},
+"h2t": {
+"<h1>A &amp; B</h1><p>Olá <strong>mundo</strong> <em>x</em></p><ul><li><p>um</p></li><li>dois</li></ul><ol start=\"3\"><li>três</li></ol><table><tr><td><p>a</p><p>b</p></td><td>c</td></tr></table><script>var x='<p>';</script><blockquote><p>q</p><blockquote><p>qq</p></blockquote></blockquote><pre><code>l1\nl2</code></pre><hr><p>a<br>b</p><div>div</div><b>bold</b><i>it</i><del>d</del>&eacute;&#233;&#xE9;&nbsp;&bogus;": "# A & B\nOlá **mundo** *x*\n- um\n- dois\n3. três\na b | c\n> q\n> > qq\n```\nl1\nl2\n```\n---\na\nb\ndiv\n**bold***it*~~d~~ééé &bogus;",
+"texto puro &amp; sem tags": "texto puro & sem tags",
+"<ul><li>a<ul><li>b</li></ul></li></ul><style>p{}</style><p>fim</p><img src=x/><br/>z": "- a\n  - b\nfim\n\nz",
+"<p>unterminated <b>bold": "unterminated **bold",
+"<h2>Título</h2><p>Texto com <strong>negrito</strong>, <em>itálico</em>, <s>tachado</s> e <code>código</code>.</p><ul><li><p>um</p></li><li><p>dois</p></li></ul><ol><li><p>a</p></li><li><p>b</p></li></ol><blockquote><p>citação</p><p>segunda</p></blockquote><hr><pre><code>code &lt;x&gt; &amp; y\n  indent</code></pre><p>fim 2*3*4 e a&lt;b &amp; c&gt;d</p>": "## Título\nTexto com **negrito**, *itálico*, ~~tachado~~ e `código`.\n- um\n- dois\n1. a\n2. b\n> citação\n> segunda\n---\n```\ncode <x> & y\n  indent\n```\nfim 2*3*4 e a<b & c>d",
+"<h3>Só título</h3><p></p><p></p><p>linha após vazias</p><ol start=\"5\"><li><p>começa em cinco</p></li><li><p>seis</p></li></ol>": "### Só título\n\n\nlinha após vazias\n5. começa em cinco\n6. seis",
+"<ul><li><p>item estrela</p></li><li><p>item</p></li></ul><p>texto <strong>a</strong> <strong>b</strong> <em>c d</em> <s>x</s> <code>a*b</code></p>": "- item estrela\n- item\ntexto **a** **b** *c d* ~~x~~ `a*b`",
+"": "",
+"<p>Linha simples</p>": "Linha simples",
+"<h1>H1</h1><h4>H4</h4><h6>H6</h6><p>####### não é</p>": "# H1\n#### H4\n###### H6\n####### não é",
+"<blockquote><p></p><p>q</p></blockquote>": "> \n> q"
+},
+"plain": {
+"<h1>A &amp; B</h1><p>Olá <strong>mundo</strong> <em>x</em></p><ul><li><p>um</p></li><li>dois</li></ul><ol start=\"3\"><li>três</li></ol><table><tr><td><p>a</p><p>b</p></td><td>c</td></tr></table><script>var x='<p>';</script><blockquote><p>q</p><blockquote><p>qq</p></blockquote></blockquote><pre><code>l1\nl2</code></pre><hr><p>a<br>b</p><div>div</div><b>bold</b><i>it</i><del>d</del>&eacute;&#233;&#xE9;&nbsp;&bogus;": "A & B\nOlá mundo x\num\ndois\ntrês\na b | c\nq\nqq\nl1\nl2\na\nb\ndiv\nbolditdééé &bogus;",
+"texto puro &amp; sem tags": "texto puro & sem tags",
+"<ul><li>a<ul><li>b</li></ul></li></ul><style>p{}</style><p>fim</p><img src=x/><br/>z": "a\nb\nfim\n\nz",
+"<p>unterminated <b>bold": "unterminated bold"
+},
+"preview": {
+"<h1>A &amp; B</h1><p>Olá <strong>mundo</strong> <em>x</em></p><ul><li><p>um</p></li><li>dois</li></ul><ol start=\"3\"><li>três</li></ol><table><tr><td><p>a</p><p>b</p></td><td>c</td></tr></table><script>var x='<p>';</script><blockquote><p>q</p><blockquote><p>qq</p></blockquote></blockquote><pre><code>l1\nl2</code></pre><hr><p>a<br>b</p><div>div</div><b>bold</b><i>it</i><del>d</del>&eacute;&#233;&#xE9;&nbsp;&bogus;": "A & B Olá mundo x um",
+"texto puro &amp; sem tags": "texto puro & sem tag",
+"<ul><li>a<ul><li>b</li></ul></li></ul><style>p{}</style><p>fim</p><img src=x/><br/>z": "a b fim z",
+"<p>unterminated <b>bold": "unterminated bold"
+},
+"fmt": [
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 0,
+"end": 0,
+"kind": "bold",
+"out": [
+"****abc def\nlinha dois\n- item",
+2,
+2,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 0,
+"end": 25,
+"kind": "bold",
+"out": [
+"**abc def\nlinha dois\n- item**",
+2,
+27,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 1,
+"end": 3,
+"kind": "bold",
+"out": [
+"a**bc** def\nlinha dois\n- item",
+3,
+5,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 25,
+"end": 25,
+"kind": "bold",
+"out": [
+"abc def\nlinha dois\n- item****",
+27,
+27,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 2,
+"end": 2,
+"kind": "bold",
+"out": [
+"ab****c def\nlinha dois\n- item",
+4,
+4,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 0,
+"end": 0,
+"kind": "italic",
+"out": [
+"**abc def\nlinha dois\n- item",
+1,
+1,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 0,
+"end": 25,
+"kind": "italic",
+"out": [
+"*abc def\nlinha dois\n- item*",
+1,
+26,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 1,
+"end": 3,
+"kind": "italic",
+"out": [
+"a*bc* def\nlinha dois\n- item",
+2,
+4,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 25,
+"end": 25,
+"kind": "italic",
+"out": [
+"abc def\nlinha dois\n- item**",
+26,
+26,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 2,
+"end": 2,
+"kind": "italic",
+"out": [
+"ab**c def\nlinha dois\n- item",
+3,
+3,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 0,
+"end": 0,
+"kind": "strike",
+"out": [
+"~~~~abc def\nlinha dois\n- item",
+2,
+2,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 0,
+"end": 25,
+"kind": "strike",
+"out": [
+"~~abc def\nlinha dois\n- item~~",
+2,
+27,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 1,
+"end": 3,
+"kind": "strike",
+"out": [
+"a~~bc~~ def\nlinha dois\n- item",
+3,
+5,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 25,
+"end": 25,
+"kind": "strike",
+"out": [
+"abc def\nlinha dois\n- item~~~~",
+27,
+27,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 2,
+"end": 2,
+"kind": "strike",
+"out": [
+"ab~~~~c def\nlinha dois\n- item",
+4,
+4,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 0,
+"end": 0,
+"kind": "code",
+"out": [
+"``abc def\nlinha dois\n- item",
+1,
+1,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 0,
+"end": 25,
+"kind": "code",
+"out": [
+"`abc def\nlinha dois\n- item`",
+1,
+26,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 1,
+"end": 3,
+"kind": "code",
+"out": [
+"a`bc` def\nlinha dois\n- item",
+2,
+4,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 25,
+"end": 25,
+"kind": "code",
+"out": [
+"abc def\nlinha dois\n- item``",
+26,
+26,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 2,
+"end": 2,
+"kind": "code",
+"out": [
+"ab``c def\nlinha dois\n- item",
+3,
+3,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 0,
+"end": 0,
+"kind": "heading2",
+"out": [
+"## abc def\nlinha dois\n- item",
+10,
+10,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 0,
+"end": 25,
+"kind": "heading2",
+"out": [
+"## abc def\n## linha dois\n## - item",
+0,
+34,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 1,
+"end": 3,
+"kind": "heading2",
+"out": [
+"## abc def\nlinha dois\n- item",
+0,
+10,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 25,
+"end": 25,
+"kind": "heading2",
+"out": [
+"abc def\nlinha dois\n## - item",
+28,
+28,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 2,
+"end": 2,
+"kind": "heading2",
+"out": [
+"## abc def\nlinha dois\n- item",
+10,
+10,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 0,
+"end": 0,
+"kind": "heading3",
+"out": [
+"### abc def\nlinha dois\n- item",
+11,
+11,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 0,
+"end": 25,
+"kind": "heading3",
+"out": [
+"### abc def\n### linha dois\n### - item",
+0,
+37,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 1,
+"end": 3,
+"kind": "heading3",
+"out": [
+"### abc def\nlinha dois\n- item",
+0,
+11,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 25,
+"end": 25,
+"kind": "heading3",
+"out": [
+"abc def\nlinha dois\n### - item",
+29,
+29,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 2,
+"end": 2,
+"kind": "heading3",
+"out": [
+"### abc def\nlinha dois\n- item",
+11,
+11,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 0,
+"end": 0,
+"kind": "bullet",
+"out": [
+"- abc def\nlinha dois\n- item",
+9,
+9,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 0,
+"end": 25,
+"kind": "bullet",
+"out": [
+"- abc def\n- linha dois\n- item",
+0,
+29,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 1,
+"end": 3,
+"kind": "bullet",
+"out": [
+"- abc def\nlinha dois\n- item",
+0,
+9,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 25,
+"end": 25,
+"kind": "bullet",
+"out": [
+"abc def\nlinha dois\nitem",
+23,
+23,
+false
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 2,
+"end": 2,
+"kind": "bullet",
+"out": [
+"- abc def\nlinha dois\n- item",
+9,
+9,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 0,
+"end": 0,
+"kind": "ordered",
+"out": [
+"1. abc def\nlinha dois\n- item",
+10,
+10,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 0,
+"end": 25,
+"kind": "ordered",
+"out": [
+"1. abc def\n2. linha dois\n3. - item",
+0,
+34,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 1,
+"end": 3,
+"kind": "ordered",
+"out": [
+"1. abc def\nlinha dois\n- item",
+0,
+10,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 25,
+"end": 25,
+"kind": "ordered",
+"out": [
+"abc def\nlinha dois\n1. - item",
+28,
+28,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 2,
+"end": 2,
+"kind": "ordered",
+"out": [
+"1. abc def\nlinha dois\n- item",
+10,
+10,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 0,
+"end": 0,
+"kind": "quote",
+"out": [
+"> abc def\nlinha dois\n- item",
+9,
+9,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 0,
+"end": 25,
+"kind": "quote",
+"out": [
+"> abc def\n> linha dois\n> - item",
+0,
+31,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 1,
+"end": 3,
+"kind": "quote",
+"out": [
+"> abc def\nlinha dois\n- item",
+0,
+9,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 25,
+"end": 25,
+"kind": "quote",
+"out": [
+"abc def\nlinha dois\n> - item",
+27,
+27,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 2,
+"end": 2,
+"kind": "quote",
+"out": [
+"> abc def\nlinha dois\n- item",
+9,
+9,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 0,
+"end": 0,
+"kind": "divider",
+"out": [
+"---\nabc def\nlinha dois\n- item",
+4,
+4,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 0,
+"end": 25,
+"kind": "divider",
+"out": [
+"---\n",
+4,
+4,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 1,
+"end": 3,
+"kind": "divider",
+"out": [
+"a\n---\n def\nlinha dois\n- item",
+6,
+6,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 25,
+"end": 25,
+"kind": "divider",
+"out": [
+"abc def\nlinha dois\n- item\n---\n",
+30,
+30,
+true
+]
+},
+{
+"text": "abc def\nlinha dois\n- item",
+"start": 2,
+"end": 2,
+"kind": "divider",
+"out": [
+"ab\n---\nc def\nlinha dois\n- item",
+7,
+7,
+true
+]
+},
+{
+"text": "**x**",
+"start": 0,
+"end": 0,
+"kind": "bold",
+"out": [
+"******x**",
+2,
+2,
+true
+]
+},
+{
+"text": "**x**",
+"start": 0,
+"end": 5,
+"kind": "bold",
+"out": [
+"x",
+0,
+1,
+false
+]
+},
+{
+"text": "**x**",
+"start": 1,
+"end": 3,
+"kind": "bold",
+"out": [
+"****x****",
+3,
+5,
+true
+]
+},
+{
+"text": "**x**",
+"start": 5,
+"end": 5,
+"kind": "bold",
+"out": [
+"**x******",
+7,
+7,
+true
+]
+},
+{
+"text": "**x**",
+"start": 2,
+"end": 2,
+"kind": "bold",
+"out": [
+"******x**",
+4,
+4,
+true
+]
+},
+{
+"text": "**x**",
+"start": 0,
+"end": 0,
+"kind": "italic",
+"out": [
+"****x**",
+1,
+1,
+true
+]
+},
+{
+"text": "**x**",
+"start": 0,
+"end": 5,
+"kind": "italic",
+"out": [
+"*x*",
+0,
+3,
+false
+]
+},
+{
+"text": "**x**",
+"start": 1,
+"end": 3,
+"kind": "italic",
+"out": [
+"*x*",
+0,
+2,
+false
+]
+},
+{
+"text": "**x**",
+"start": 5,
+"end": 5,
+"kind": "italic",
+"out": [
+"**x****",
+6,
+6,
+true
+]
+},
+{
+"text": "**x**",
+"start": 2,
+"end": 2,
+"kind": "italic",
+"out": [
+"****x**",
+3,
+3,
+true
+]
+},
+{
+"text": "**x**",
+"start": 0,
+"end": 0,
+"kind": "strike",
+"out": [
+"~~~~**x**",
+2,
+2,
+true
+]
+},
+{
+"text": "**x**",
+"start": 0,
+"end": 5,
+"kind": "strike",
+"out": [
+"~~**x**~~",
+2,
+7,
+true
+]
+},
+{
+"text": "**x**",
+"start": 1,
+"end": 3,
+"kind": "strike",
+"out": [
+"*~~*x~~**",
+3,
+5,
+true
+]
+},
+{
+"text": "**x**",
+"start": 5,
+"end": 5,
+"kind": "strike",
+"out": [
+"**x**~~~~",
+7,
+7,
+true
+]
+},
+{
+"text": "**x**",
+"start": 2,
+"end": 2,
+"kind": "strike",
+"out": [
+"**~~~~x**",
+4,
+4,
+true
+]
+},
+{
+"text": "**x**",
+"start": 0,
+"end": 0,
+"kind": "code",
+"out": [
+"``**x**",
+1,
+1,
+true
+]
+},
+{
+"text": "**x**",
+"start": 0,
+"end": 5,
+"kind": "code",
+"out": [
+"`**x**`",
+1,
+6,
+true
+]
+},
+{
+"text": "**x**",
+"start": 1,
+"end": 3,
+"kind": "code",
+"out": [
+"*`*x`**",
+2,
+4,
+true
+]
+},
+{
+"text": "**x**",
+"start": 5,
+"end": 5,
+"kind": "code",
+"out": [
+"**x**``",
+6,
+6,
+true
+]
+},
+{
+"text": "**x**",
+"start": 2,
+"end": 2,
+"kind": "code",
+"out": [
+"**``x**",
+3,
+3,
+true
+]
+},
+{
+"text": "**x**",
+"start": 0,
+"end": 0,
+"kind": "heading2",
+"out": [
+"## **x**",
+8,
+8,
+true
+]
+},
+{
+"text": "**x**",
+"start": 0,
+"end": 5,
+"kind": "heading2",
+"out": [
+"## **x**",
+0,
+8,
+true
+]
+},
+{
+"text": "**x**",
+"start": 1,
+"end": 3,
+"kind": "heading2",
+"out": [
+"## **x**",
+0,
+8,
+true
+]
+},
+{
+"text": "**x**",
+"start": 5,
+"end": 5,
+"kind": "heading2",
+"out": [
+"## **x**",
+8,
+8,
+true
+]
+},
+{
+"text": "**x**",
+"start": 2,
+"end": 2,
+"kind": "heading2",
+"out": [
+"## **x**",
+8,
+8,
+true
+]
+},
+{
+"text": "**x**",
+"start": 0,
+"end": 0,
+"kind": "heading3",
+"out": [
+"### **x**",
+9,
+9,
+true
+]
+},
+{
+"text": "**x**",
+"start": 0,
+"end": 5,
+"kind": "heading3",
+"out": [
+"### **x**",
+0,
+9,
+true
+]
+},
+{
+"text": "**x**",
+"start": 1,
+"end": 3,
+"kind": "heading3",
+"out": [
+"### **x**",
+0,
+9,
+true
+]
+},
+{
+"text": "**x**",
+"start": 5,
+"end": 5,
+"kind": "heading3",
+"out": [
+"### **x**",
+9,
+9,
+true
+]
+},
+{
+"text": "**x**",
+"start": 2,
+"end": 2,
+"kind": "heading3",
+"out": [
+"### **x**",
+9,
+9,
+true
+]
+},
+{
+"text": "**x**",
+"start": 0,
+"end": 0,
+"kind": "bullet",
+"out": [
+"- **x**",
+7,
+7,
+true
+]
+},
+{
+"text": "**x**",
+"start": 0,
+"end": 5,
+"kind": "bullet",
+"out": [
+"- **x**",
+0,
+7,
+true
+]
+},
+{
+"text": "**x**",
+"start": 1,
+"end": 3,
+"kind": "bullet",
+"out": [
+"- **x**",
+0,
+7,
+true
+]
+},
+{
+"text": "**x**",
+"start": 5,
+"end": 5,
+"kind": "bullet",
+"out": [
+"- **x**",
+7,
+7,
+true
+]
+},
+{
+"text": "**x**",
+"start": 2,
+"end": 2,
+"kind": "bullet",
+"out": [
+"- **x**",
+7,
+7,
+true
+]
+},
+{
+"text": "**x**",
+"start": 0,
+"end": 0,
+"kind": "ordered",
+"out": [
+"1. **x**",
+8,
+8,
+true
+]
+},
+{
+"text": "**x**",
+"start": 0,
+"end": 5,
+"kind": "ordered",
+"out": [
+"1. **x**",
+0,
+8,
+true
+]
+},
+{
+"text": "**x**",
+"start": 1,
+"end": 3,
+"kind": "ordered",
+"out": [
+"1. **x**",
+0,
+8,
+true
+]
+},
+{
+"text": "**x**",
+"start": 5,
+"end": 5,
+"kind": "ordered",
+"out": [
+"1. **x**",
+8,
+8,
+true
+]
+},
+{
+"text": "**x**",
+"start": 2,
+"end": 2,
+"kind": "ordered",
+"out": [
+"1. **x**",
+8,
+8,
+true
+]
+},
+{
+"text": "**x**",
+"start": 0,
+"end": 0,
+"kind": "quote",
+"out": [
+"> **x**",
+7,
+7,
+true
+]
+},
+{
+"text": "**x**",
+"start": 0,
+"end": 5,
+"kind": "quote",
+"out": [
+"> **x**",
+0,
+7,
+true
+]
+},
+{
+"text": "**x**",
+"start": 1,
+"end": 3,
+"kind": "quote",
+"out": [
+"> **x**",
+0,
+7,
+true
+]
+},
+{
+"text": "**x**",
+"start": 5,
+"end": 5,
+"kind": "quote",
+"out": [
+"> **x**",
+7,
+7,
+true
+]
+},
+{
+"text": "**x**",
+"start": 2,
+"end": 2,
+"kind": "quote",
+"out": [
+"> **x**",
+7,
+7,
+true
+]
+},
+{
+"text": "**x**",
+"start": 0,
+"end": 0,
+"kind": "divider",
+"out": [
+"---\n**x**",
+4,
+4,
+true
+]
+},
+{
+"text": "**x**",
+"start": 0,
+"end": 5,
+"kind": "divider",
+"out": [
+"---\n",
+4,
+4,
+true
+]
+},
+{
+"text": "**x**",
+"start": 1,
+"end": 3,
+"kind": "divider",
+"out": [
+"*\n---\n**",
+6,
+6,
+true
+]
+},
+{
+"text": "**x**",
+"start": 5,
+"end": 5,
+"kind": "divider",
+"out": [
+"**x**\n---\n",
+10,
+10,
+true
+]
+},
+{
+"text": "**x**",
+"start": 2,
+"end": 2,
+"kind": "divider",
+"out": [
+"**\n---\nx**",
+7,
+7,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 0,
+"end": 0,
+"kind": "bold",
+"out": [
+"****## t\n### u\nv",
+2,
+2,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 0,
+"end": 12,
+"kind": "bold",
+"out": [
+"**## t\n### u\nv**",
+2,
+14,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 1,
+"end": 3,
+"kind": "bold",
+"out": [
+"#**# **t\n### u\nv",
+3,
+5,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 12,
+"end": 12,
+"kind": "bold",
+"out": [
+"## t\n### u\nv****",
+14,
+14,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 2,
+"end": 2,
+"kind": "bold",
+"out": [
+"##**** t\n### u\nv",
+4,
+4,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 0,
+"end": 0,
+"kind": "italic",
+"out": [
+"**## t\n### u\nv",
+1,
+1,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 0,
+"end": 12,
+"kind": "italic",
+"out": [
+"*## t\n### u\nv*",
+1,
+13,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 1,
+"end": 3,
+"kind": "italic",
+"out": [
+"#*# *t\n### u\nv",
+2,
+4,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 12,
+"end": 12,
+"kind": "italic",
+"out": [
+"## t\n### u\nv**",
+13,
+13,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 2,
+"end": 2,
+"kind": "italic",
+"out": [
+"##** t\n### u\nv",
+3,
+3,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 0,
+"end": 0,
+"kind": "strike",
+"out": [
+"~~~~## t\n### u\nv",
+2,
+2,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 0,
+"end": 12,
+"kind": "strike",
+"out": [
+"~~## t\n### u\nv~~",
+2,
+14,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 1,
+"end": 3,
+"kind": "strike",
+"out": [
+"#~~# ~~t\n### u\nv",
+3,
+5,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 12,
+"end": 12,
+"kind": "strike",
+"out": [
+"## t\n### u\nv~~~~",
+14,
+14,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 2,
+"end": 2,
+"kind": "strike",
+"out": [
+"##~~~~ t\n### u\nv",
+4,
+4,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 0,
+"end": 0,
+"kind": "code",
+"out": [
+"``## t\n### u\nv",
+1,
+1,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 0,
+"end": 12,
+"kind": "code",
+"out": [
+"`## t\n### u\nv`",
+1,
+13,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 1,
+"end": 3,
+"kind": "code",
+"out": [
+"#`# `t\n### u\nv",
+2,
+4,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 12,
+"end": 12,
+"kind": "code",
+"out": [
+"## t\n### u\nv``",
+13,
+13,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 2,
+"end": 2,
+"kind": "code",
+"out": [
+"##`` t\n### u\nv",
+3,
+3,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 0,
+"end": 0,
+"kind": "heading2",
+"out": [
+"t\n### u\nv",
+1,
+1,
+false
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 0,
+"end": 12,
+"kind": "heading2",
+"out": [
+"## t\n## u\n## v",
+0,
+14,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 1,
+"end": 3,
+"kind": "heading2",
+"out": [
+"t\n### u\nv",
+0,
+1,
+false
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 12,
+"end": 12,
+"kind": "heading2",
+"out": [
+"## t\n### u\n## v",
+15,
+15,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 2,
+"end": 2,
+"kind": "heading2",
+"out": [
+"t\n### u\nv",
+1,
+1,
+false
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 0,
+"end": 0,
+"kind": "heading3",
+"out": [
+"### t\n### u\nv",
+5,
+5,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 0,
+"end": 12,
+"kind": "heading3",
+"out": [
+"### t\n### u\n### v",
+0,
+17,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 1,
+"end": 3,
+"kind": "heading3",
+"out": [
+"### t\n### u\nv",
+0,
+5,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 12,
+"end": 12,
+"kind": "heading3",
+"out": [
+"## t\n### u\n### v",
+16,
+16,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 2,
+"end": 2,
+"kind": "heading3",
+"out": [
+"### t\n### u\nv",
+5,
+5,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 0,
+"end": 0,
+"kind": "bullet",
+"out": [
+"- ## t\n### u\nv",
+6,
+6,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 0,
+"end": 12,
+"kind": "bullet",
+"out": [
+"- ## t\n- ### u\n- v",
+0,
+18,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 1,
+"end": 3,
+"kind": "bullet",
+"out": [
+"- ## t\n### u\nv",
+0,
+6,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 12,
+"end": 12,
+"kind": "bullet",
+"out": [
+"## t\n### u\n- v",
+14,
+14,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 2,
+"end": 2,
+"kind": "bullet",
+"out": [
+"- ## t\n### u\nv",
+6,
+6,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 0,
+"end": 0,
+"kind": "ordered",
+"out": [
+"1. ## t\n### u\nv",
+7,
+7,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 0,
+"end": 12,
+"kind": "ordered",
+"out": [
+"1. ## t\n2. ### u\n3. v",
+0,
+21,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 1,
+"end": 3,
+"kind": "ordered",
+"out": [
+"1. ## t\n### u\nv",
+0,
+7,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 12,
+"end": 12,
+"kind": "ordered",
+"out": [
+"## t\n### u\n1. v",
+15,
+15,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 2,
+"end": 2,
+"kind": "ordered",
+"out": [
+"1. ## t\n### u\nv",
+7,
+7,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 0,
+"end": 0,
+"kind": "quote",
+"out": [
+"> ## t\n### u\nv",
+6,
+6,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 0,
+"end": 12,
+"kind": "quote",
+"out": [
+"> ## t\n> ### u\n> v",
+0,
+18,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 1,
+"end": 3,
+"kind": "quote",
+"out": [
+"> ## t\n### u\nv",
+0,
+6,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 12,
+"end": 12,
+"kind": "quote",
+"out": [
+"## t\n### u\n> v",
+14,
+14,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 2,
+"end": 2,
+"kind": "quote",
+"out": [
+"> ## t\n### u\nv",
+6,
+6,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 0,
+"end": 0,
+"kind": "divider",
+"out": [
+"---\n## t\n### u\nv",
+4,
+4,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 0,
+"end": 12,
+"kind": "divider",
+"out": [
+"---\n",
+4,
+4,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 1,
+"end": 3,
+"kind": "divider",
+"out": [
+"#\n---\nt\n### u\nv",
+6,
+6,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 12,
+"end": 12,
+"kind": "divider",
+"out": [
+"## t\n### u\nv\n---\n",
+17,
+17,
+true
+]
+},
+{
+"text": "## t\n### u\nv",
+"start": 2,
+"end": 2,
+"kind": "divider",
+"out": [
+"##\n---\n t\n### u\nv",
+7,
+7,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 0,
+"end": 0,
+"kind": "bold",
+"out": [
+"****a\nb\nc",
+2,
+2,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 0,
+"end": 5,
+"kind": "bold",
+"out": [
+"**a\nb\nc**",
+2,
+7,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 1,
+"end": 3,
+"kind": "bold",
+"out": [
+"a**\nb**\nc",
+3,
+5,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 5,
+"end": 5,
+"kind": "bold",
+"out": [
+"a\nb\nc****",
+7,
+7,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 2,
+"end": 2,
+"kind": "bold",
+"out": [
+"a\n****b\nc",
+4,
+4,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 0,
+"end": 0,
+"kind": "italic",
+"out": [
+"**a\nb\nc",
+1,
+1,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 0,
+"end": 5,
+"kind": "italic",
+"out": [
+"*a\nb\nc*",
+1,
+6,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 1,
+"end": 3,
+"kind": "italic",
+"out": [
+"a*\nb*\nc",
+2,
+4,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 5,
+"end": 5,
+"kind": "italic",
+"out": [
+"a\nb\nc**",
+6,
+6,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 2,
+"end": 2,
+"kind": "italic",
+"out": [
+"a\n**b\nc",
+3,
+3,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 0,
+"end": 0,
+"kind": "strike",
+"out": [
+"~~~~a\nb\nc",
+2,
+2,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 0,
+"end": 5,
+"kind": "strike",
+"out": [
+"~~a\nb\nc~~",
+2,
+7,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 1,
+"end": 3,
+"kind": "strike",
+"out": [
+"a~~\nb~~\nc",
+3,
+5,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 5,
+"end": 5,
+"kind": "strike",
+"out": [
+"a\nb\nc~~~~",
+7,
+7,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 2,
+"end": 2,
+"kind": "strike",
+"out": [
+"a\n~~~~b\nc",
+4,
+4,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 0,
+"end": 0,
+"kind": "code",
+"out": [
+"``a\nb\nc",
+1,
+1,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 0,
+"end": 5,
+"kind": "code",
+"out": [
+"`a\nb\nc`",
+1,
+6,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 1,
+"end": 3,
+"kind": "code",
+"out": [
+"a`\nb`\nc",
+2,
+4,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 5,
+"end": 5,
+"kind": "code",
+"out": [
+"a\nb\nc``",
+6,
+6,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 2,
+"end": 2,
+"kind": "code",
+"out": [
+"a\n``b\nc",
+3,
+3,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 0,
+"end": 0,
+"kind": "heading2",
+"out": [
+"## a\nb\nc",
+4,
+4,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 0,
+"end": 5,
+"kind": "heading2",
+"out": [
+"## a\n## b\n## c",
+0,
+14,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 1,
+"end": 3,
+"kind": "heading2",
+"out": [
+"## a\n## b\nc",
+0,
+9,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 5,
+"end": 5,
+"kind": "heading2",
+"out": [
+"a\nb\n## c",
+8,
+8,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 2,
+"end": 2,
+"kind": "heading2",
+"out": [
+"a\n## b\nc",
+6,
+6,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 0,
+"end": 0,
+"kind": "heading3",
+"out": [
+"### a\nb\nc",
+5,
+5,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 0,
+"end": 5,
+"kind": "heading3",
+"out": [
+"### a\n### b\n### c",
+0,
+17,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 1,
+"end": 3,
+"kind": "heading3",
+"out": [
+"### a\n### b\nc",
+0,
+11,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 5,
+"end": 5,
+"kind": "heading3",
+"out": [
+"a\nb\n### c",
+9,
+9,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 2,
+"end": 2,
+"kind": "heading3",
+"out": [
+"a\n### b\nc",
+7,
+7,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 0,
+"end": 0,
+"kind": "bullet",
+"out": [
+"- a\nb\nc",
+3,
+3,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 0,
+"end": 5,
+"kind": "bullet",
+"out": [
+"- a\n- b\n- c",
+0,
+11,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 1,
+"end": 3,
+"kind": "bullet",
+"out": [
+"- a\n- b\nc",
+0,
+7,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 5,
+"end": 5,
+"kind": "bullet",
+"out": [
+"a\nb\n- c",
+7,
+7,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 2,
+"end": 2,
+"kind": "bullet",
+"out": [
+"a\n- b\nc",
+5,
+5,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 0,
+"end": 0,
+"kind": "ordered",
+"out": [
+"1. a\nb\nc",
+4,
+4,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 0,
+"end": 5,
+"kind": "ordered",
+"out": [
+"1. a\n2. b\n3. c",
+0,
+14,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 1,
+"end": 3,
+"kind": "ordered",
+"out": [
+"1. a\n2. b\nc",
+0,
+9,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 5,
+"end": 5,
+"kind": "ordered",
+"out": [
+"a\nb\n1. c",
+8,
+8,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 2,
+"end": 2,
+"kind": "ordered",
+"out": [
+"a\n1. b\nc",
+6,
+6,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 0,
+"end": 0,
+"kind": "quote",
+"out": [
+"> a\nb\nc",
+3,
+3,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 0,
+"end": 5,
+"kind": "quote",
+"out": [
+"> a\n> b\n> c",
+0,
+11,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 1,
+"end": 3,
+"kind": "quote",
+"out": [
+"> a\n> b\nc",
+0,
+7,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 5,
+"end": 5,
+"kind": "quote",
+"out": [
+"a\nb\n> c",
+7,
+7,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 2,
+"end": 2,
+"kind": "quote",
+"out": [
+"a\n> b\nc",
+5,
+5,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 0,
+"end": 0,
+"kind": "divider",
+"out": [
+"---\na\nb\nc",
+4,
+4,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 0,
+"end": 5,
+"kind": "divider",
+"out": [
+"---\n",
+4,
+4,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 1,
+"end": 3,
+"kind": "divider",
+"out": [
+"a\n---\nc",
+5,
+5,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 5,
+"end": 5,
+"kind": "divider",
+"out": [
+"a\nb\nc\n---\n",
+10,
+10,
+true
+]
+},
+{
+"text": "a\nb\nc",
+"start": 2,
+"end": 2,
+"kind": "divider",
+"out": [
+"a\n---\nb\nc",
+6,
+6,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "bold",
+"out": [
+"****",
+2,
+2,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "bold",
+"out": [
+"****",
+2,
+2,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "bold",
+"out": [
+"****",
+2,
+2,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "bold",
+"out": [
+"****",
+2,
+2,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "bold",
+"out": [
+"****",
+2,
+2,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "italic",
+"out": [
+"**",
+1,
+1,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "italic",
+"out": [
+"**",
+1,
+1,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "italic",
+"out": [
+"**",
+1,
+1,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "italic",
+"out": [
+"**",
+1,
+1,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "italic",
+"out": [
+"**",
+1,
+1,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "strike",
+"out": [
+"~~~~",
+2,
+2,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "strike",
+"out": [
+"~~~~",
+2,
+2,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "strike",
+"out": [
+"~~~~",
+2,
+2,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "strike",
+"out": [
+"~~~~",
+2,
+2,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "strike",
+"out": [
+"~~~~",
+2,
+2,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "code",
+"out": [
+"``",
+1,
+1,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "code",
+"out": [
+"``",
+1,
+1,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "code",
+"out": [
+"``",
+1,
+1,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "code",
+"out": [
+"``",
+1,
+1,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "code",
+"out": [
+"``",
+1,
+1,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "heading2",
+"out": [
+"## ",
+3,
+3,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "heading2",
+"out": [
+"## ",
+3,
+3,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "heading2",
+"out": [
+"## ",
+3,
+3,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "heading2",
+"out": [
+"## ",
+3,
+3,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "heading2",
+"out": [
+"## ",
+3,
+3,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "heading3",
+"out": [
+"### ",
+4,
+4,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "heading3",
+"out": [
+"### ",
+4,
+4,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "heading3",
+"out": [
+"### ",
+4,
+4,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "heading3",
+"out": [
+"### ",
+4,
+4,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "heading3",
+"out": [
+"### ",
+4,
+4,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "bullet",
+"out": [
+"- ",
+2,
+2,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "bullet",
+"out": [
+"- ",
+2,
+2,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "bullet",
+"out": [
+"- ",
+2,
+2,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "bullet",
+"out": [
+"- ",
+2,
+2,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "bullet",
+"out": [
+"- ",
+2,
+2,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "ordered",
+"out": [
+"1. ",
+3,
+3,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "ordered",
+"out": [
+"1. ",
+3,
+3,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "ordered",
+"out": [
+"1. ",
+3,
+3,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "ordered",
+"out": [
+"1. ",
+3,
+3,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "ordered",
+"out": [
+"1. ",
+3,
+3,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "quote",
+"out": [
+"> ",
+2,
+2,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "quote",
+"out": [
+"> ",
+2,
+2,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "quote",
+"out": [
+"> ",
+2,
+2,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "quote",
+"out": [
+"> ",
+2,
+2,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "quote",
+"out": [
+"> ",
+2,
+2,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "divider",
+"out": [
+"---\n",
+4,
+4,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "divider",
+"out": [
+"---\n",
+4,
+4,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "divider",
+"out": [
+"---\n",
+4,
+4,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "divider",
+"out": [
+"---\n",
+4,
+4,
+true
+]
+},
+{
+"text": "",
+"start": 0,
+"end": 0,
+"kind": "divider",
+"out": [
+"---\n",
+4,
+4,
+true
+]
+}
+],
+"search": {
+"acao": [
+[
+"n0",
+1.0,
+"Reunião com o cliente às 10h"
+],
+[
+"n2",
+1.0,
+"acao rapida"
+]
+],
+"CAFE": [
+[
+"n2",
+1.0,
+"acao rapida"
+],
+[
+"n1",
+1.0,
+"pão, leite, café"
+]
+],
+"café leite": [
+[
+"n1",
+1.0,
+"pão, leite, café"
+],
+[
+"n2",
+0.5,
+"acao rapida"
+]
+],
+"palavra": [
+[
+"n3",
+1.0,
+"…x x x x x x x x x x x x x x x x x x x x palavra final"
+]
+],
+"inexistente": [],
+"reuniao cliente x": [
+[
+"n0",
+0.6666666666666666,
+"Reunião com o cliente às 10h"
+],
+[
+"n3",
+0.3333333333333333,
+"nada aqui x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x …"
+]
+]
+},
+"fold": {
+"Ação": "acao",
+"ÉÇÃÔ ñ": "ecao n",
+"ß ﬁ": "ss fi",
+"Ωmega": "ωmega"
+},
+"md": "# Caderno X\n\nIntro.\n\n## Ação urgente\n\nStatus: A fazer\n\nLocal: x\n\nReunião com o cliente às 10h\n\n## Compras\n\nStatus: A fazer\n\nLocal: x\n\npão, leite, café\n\n## Seção\n\n### Café da manhã\n\nStatus: A fazer\n\nLocal: x\n\n#### Título\n\nTexto com **negrito**, *itálico*, ~~tachado~~ e `código`.\n\n- um\n- dois\n\n1. a\n2. b\n\n> citação\n>\n> segunda\n\n---\n\n```\ncode <x> & y\n  indent\n```\n\nfim 2\\*3\\*4 e a\\<b & c\\>d\n",
+"html": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Caderno X</title>\n<style>\nbody{font-family:Segoe UI,Arial,sans-serif;line-height:1.5;max-width:50em;margin:2em auto;padding:0 1em;color:#1a1a1a;background:#fff}\nh1,h2,h3,h4,h5,h6{color:#1F4E79;line-height:1.25}\n.meta{color:#444;margin:.2em 0}\nblockquote{margin:1em 0;padding:.2em 1em;border-left:4px solid #1F4E79;background:#f3f6fa}\npre{background:#f4f4f4;padding:.8em;overflow-x:auto;white-space:pre-wrap}\ncode{font-family:Consolas,monospace}\n@media (prefers-color-scheme:dark){body{color:#eee;background:#1e1e1e}h1,h2,h3,h4,h5,h6{color:#9cc3ea}.meta{color:#bbb}blockquote{background:#26303a}pre{background:#2a2a2a}}\n</style>\n</head>\n<body>\n<main>\n<h1>Caderno X</h1>\n<p>Intro.</p>\n<h2>Ação urgente</h2>\n<p class=\"meta\">Status: A fazer</p>\n<p class=\"meta\">Local: x</p>\n<p>Reunião com o cliente às 10h</p>\n<h2>Compras</h2>\n<p class=\"meta\">Status: A fazer</p>\n<p class=\"meta\">Local: x</p>\n<p>pão, leite, café</p>\n<h2>Seção</h2>\n<h3>Café da manhã</h3>\n<p class=\"meta\">Status: A fazer</p>\n<p class=\"meta\">Local: x</p>\n<h4>Título</h4>\n<p>Texto com <strong>negrito</strong>, <em>itálico</em>, <s>tachado</s> e <code>código</code>.</p>\n<ul>\n<li>um</li>\n<li>dois</li>\n</ul>\n<ol>\n<li>a</li>\n<li>b</li>\n</ol>\n<blockquote>\n<p>citação</p>\n<p>segunda</p>\n</blockquote>\n<hr>\n<pre><code>code &lt;x&gt; &amp; y\n  indent</code></pre>\n<p>fim 2*3*4 e a&lt;b &amp; c&gt;d</p>\n</main>\n</body>\n</html>\n",
+"md2": "## Título\n\nTexto com **negrito**, *itálico*, ~~tachado~~ e `código`.\n\n- um\n- dois\n\n1. a\n2. b\n\n> citação\n>\n> segunda\n\n---\n\n```\ncode <x> & y\n  indent\n```\n\nfim 2\\*3\\*4 e a\\<b & c\\>d\n\n### Só título\n\nlinha após vazias\n\n5. começa em cinco\n6. seis\n\n- item estrela\n- item\n\ntexto **a** **b** *c d* ~~x~~ `a*b`\n",
+"html2": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>T</title>\n<style>\nbody{font-family:Segoe UI,Arial,sans-serif;line-height:1.5;max-width:50em;margin:2em auto;padding:0 1em;color:#1a1a1a;background:#fff}\nh1,h2,h3,h4,h5,h6{color:#1F4E79;line-height:1.25}\n.meta{color:#444;margin:.2em 0}\nblockquote{margin:1em 0;padding:.2em 1em;border-left:4px solid #1F4E79;background:#f3f6fa}\npre{background:#f4f4f4;padding:.8em;overflow-x:auto;white-space:pre-wrap}\ncode{font-family:Consolas,monospace}\n@media (prefers-color-scheme:dark){body{color:#eee;background:#1e1e1e}h1,h2,h3,h4,h5,h6{color:#9cc3ea}.meta{color:#bbb}blockquote{background:#26303a}pre{background:#2a2a2a}}\n</style>\n</head>\n<body>\n<main>\n<h2>Título</h2>\n<p>Texto com <strong>negrito</strong>, <em>itálico</em>, <s>tachado</s> e <code>código</code>.</p>\n<ul>\n<li>um</li>\n<li>dois</li>\n</ul>\n<ol>\n<li>a</li>\n<li>b</li>\n</ol>\n<blockquote>\n<p>citação</p>\n<p>segunda</p>\n</blockquote>\n<hr>\n<pre><code>code &lt;x&gt; &amp; y\n  indent</code></pre>\n<p>fim 2*3*4 e a&lt;b &amp; c&gt;d</p>\n<h3>Só título</h3>\n<p>linha após vazias</p>\n<ol start=\"5\">\n<li>começa em cinco</li>\n<li>seis</li>\n</ol>\n<ul>\n<li>item estrela</li>\n<li>item</li>\n</ul>\n<p>texto <strong>a</strong> <strong>b</strong> <em>c d</em> <s>x</s> <code>a*b</code></p>\n</main>\n</body>\n</html>\n",
+"safe": {
+"a/b:c*?": "abc",
+"CON": "_CON",
+"  ...  ": "Sem título",
+"nome.  ": "nome",
+"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+"com.txt": "com.txt"
+},
+"tidy": "a b\n- item\n```\n  keep   spaces\n```\nfim",
+"fit": [
+"linha um\nlinha dois",
+true
+],
+"notes": [
+{
+"id": "n0",
+"title": "Ação urgente",
+"content": "<p>Reunião com o cliente às 10h</p>",
+"tags": [],
+"laneId": "todo",
+"notebookId": null,
+"folderId": null,
+"createdAt": "2026-01-01T10:00:00.000Z",
+"updatedAt": "2026-02-01T10:00:00.000Z"
+},
+{
+"id": "n1",
+"title": "Compras",
+"content": "<p>pão, leite, café</p>",
+"tags": [],
+"laneId": "todo",
+"notebookId": null,
+"folderId": null,
+"createdAt": "2026-01-02T10:00:00.000Z",
+"updatedAt": "2026-02-02T10:00:00.000Z"
+},
+{
+"id": "n2",
+"title": "Café da manhã",
+"content": "<p>acao rapida</p>",
+"tags": [],
+"laneId": "todo",
+"notebookId": null,
+"folderId": null,
+"createdAt": "2026-01-03T10:00:00.000Z",
+"updatedAt": "2026-02-03T10:00:00.000Z"
+},
+{
+"id": "n3",
+"title": "Outra",
+"content": "<p>nada aqui x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x palavra final</p>",
+"tags": [],
+"laneId": "todo",
+"notebookId": null,
+"folderId": null,
+"createdAt": "2026-01-04T10:00:00.000Z",
+"updatedAt": "2026-02-04T10:00:00.000Z"
+}
+],
+"content2": "<h2>Título</h2><p>Texto com <strong>negrito</strong>, <em>itálico</em>, <s>tachado</s> e <code>código</code>.</p><ul><li><p>um</p></li><li><p>dois</p></li></ul><ol><li><p>a</p></li><li><p>b</p></li></ol><blockquote><p>citação</p><p>segunda</p></blockquote><hr><pre><code>code &lt;x&gt; &amp; y\n  indent</code></pre><p>fim 2*3*4 e a&lt;b &amp; c&gt;d</p>"
+}
